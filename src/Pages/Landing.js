@@ -1,53 +1,51 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import styles from "./index.module.css";
-import { HiOutlineDatabase } from "react-icons/hi";
-import { AiOutlineArrowRight, AiFillHeart } from "react-icons/ai";
+import DatabaseSvg from "../assets/icons/database.svg";
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 
-export default class index extends Component {
-  render() {
-    return (
-      <div className={styles.container}>
-        <div className={`${styles.home__topbar} p-4 text-lg`}>
-          <div className={styles.navbar__brand}>
-            <HiOutlineDatabase className={styles.brand__icon} />
-            <p className={`text-xl`}>SQL EDITOR</p>
+const Landing = () => {
+  return (
+    <div className="container">
+      <div className={`home__topbar p-4 text-lg`}>
+        <div className="navbar__brand">
+          <div className="brand__icon">
+            <img src={DatabaseSvg} alt="" />
           </div>
-        </div>
-        <div className={styles.hero}>
-          <h1 className={styles.title}>
-            Do <span className={styles.success}>Query</span> like never before.
-          </h1>
-          <p className={styles.text}>
-            A small sql editor where you can do queries
-            <br /> on sql tables effortlessly :)
-          </p>
-          <Link to="/editor">
-            <div className={styles.btn}>
-              <p className={styles.btn__text}>Get started</p>
-              <AiOutlineArrowRight className={styles.icon} />
-            </div>
-          </Link>
-        </div>
-        <div className={styles.product__container}>
-          <Link to="/editor">
-            <img
-              src={`${process.env.PUBLIC_URL}/sqlBanner.png`}
-              alt="sql editor"
-              className={styles.product}
-            />
-          </Link>
-        </div>
-
-        <div className={styles.footer__container}>
-          <p className={styles.footer}>
-            Made with{" "}
-            <span className={styles.warning}>
-              <AiFillHeart />
-            </span>
-          </p>
+          <p className={`text-xl`}>SQL EDITOR</p>
         </div>
       </div>
-    );
-  }
-}
+      <div className="hero">
+        <h1 className="title">
+          Do <span className="success">Query</span> like never before.
+        </h1>
+        <p className="text">
+          A small sql editor where you can do queries
+          <br /> on sql tables effortlessly :)
+        </p>
+        <Link to="/editor">
+          <div className="btn">
+            <p className="btn__text">Get started</p>
+            <ArrowForwardIcon className="icon" />
+          </div>
+        </Link>
+      </div>
+      <div className="product__container">
+        <Link to="/editor">
+          <img
+            src={`${process.env.PUBLIC_URL}/sqlBanner.png`}
+            alt="sql editor"
+            className="product"
+          />
+        </Link>
+      </div>
+
+      <div className="footer__container">
+        <p className="footer">
+          Made with <span className="warning"></span>
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default Landing;
