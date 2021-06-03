@@ -5,9 +5,25 @@ import { SQLContext } from "../Context";
 import MenuIcon from "@material-ui/icons/Menu";
 import { IconButton } from "@material-ui/core";
 import { SvgIcon } from "@material-ui/core";
-import Button from "./Button";
+import Button from "@material-ui/core/Button";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import PermIdentityOutlinedIcon from "@material-ui/icons/PermIdentityOutlined";
+import KeyboardArrowDownOutlinedIcon from "@material-ui/icons/KeyboardArrowDownOutlined";
+import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
+import AccountBalanceWalletOutlinedIcon from "@material-ui/icons/AccountBalanceWalletOutlined";
+import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
+import TurnedInNotOutlinedIcon from "@material-ui/icons/TurnedInNotOutlined";
+
 const Navbar = () => {
   const { navToggle, setNavToggle } = useContext(SQLContext);
+  const [dropdown, setDropdown] = React.useState(null);
+  const handleClick = (event) => {
+    setDropdown(event.currentTarget);
+  };
+  const handleClose = () => {
+    setDropdown(null);
+  };
 
   return (
     <NavbarStyled>
@@ -29,7 +45,39 @@ const Navbar = () => {
             <p className="navbar-text">SQL EDITOR</p>
           </div>
         </Link>
-        <div>hi</div>
+        <div>
+          <Button
+            aria-controls="navbar-menu"
+            aria-haspopup="true"
+            onMouseOver={handleClick}
+          >
+            <PermIdentityOutlinedIcon className="navbar-item-color" />
+            <p className="navbar-item">shivanshpahwa</p>
+            <KeyboardArrowDownOutlinedIcon className="navbar-item-color" />
+          </Button>
+          <Menu
+            id="navbar-menu"
+            anchorEl={dropdown}
+            keepMounted
+            open={Boolean(dropdown)}
+            onClose={handleClose}
+            className="navbar-menu"
+            MenuListProps={{ onMouseLeave: handleClose }}
+          >
+            <MenuItem>
+              <AccountBalanceWalletOutlinedIcon /> My account
+            </MenuItem>
+            <MenuItem>
+              <TurnedInNotOutlinedIcon /> Saved
+            </MenuItem>
+            <MenuItem>
+              <HelpOutlineIcon /> Help
+            </MenuItem>
+            <MenuItem>
+              <ExitToAppOutlinedIcon /> Logout
+            </MenuItem>
+          </Menu>
+        </div>
       </div>
     </NavbarStyled>
   );
@@ -43,6 +91,7 @@ const NavbarStyled = styled.main`
     padding: 1rem;
     background-color: var(--background-dark-color);
     display: flex;
+    align-items: center;
     justify-content: space-between;
     .navbar-brand {
       display: flex;
@@ -60,6 +109,21 @@ const NavbarStyled = styled.main`
           font-size: 1.2rem;
         }
       }
+    }
+    .navbar-item {
+      font-size: 1rem;
+      text-transform: none;
+      color: var(--font-light-color);
+      margin: 0 0.4rem;
+      @media screen and (max-width: 576px) {
+        font-size: 0.8rem;
+      }
+    }
+    .navbar-item-color {
+      color: var(--font-light-color);
+    }
+    .navbar-menu {
+      background-color: var(--sidebar-dark-color);
     }
   }
 `;
