@@ -11,9 +11,8 @@ const Editor = () => {
   return (
     <>
       <Sidebar navToggle={navToggle} />
-      <EditorStyled>
-        <Navbar />
-      </EditorStyled>
+      <Navbar />
+      <EditorStyled></EditorStyled>
     </>
   );
 };
@@ -22,7 +21,7 @@ export default Editor;
 const EditorStyled = styled.main`
   position: relative;
   margin-left: 16.3rem;
-  min-height: 100vh;
+  min-height: 90vh;
   background-color: var(--sidebar-dark-color);
   @media screen and (max-width: 1280px) {
     margin-left: 12rem;

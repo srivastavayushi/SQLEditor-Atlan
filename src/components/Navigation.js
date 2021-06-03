@@ -2,13 +2,27 @@ import React, { useContext } from "react";
 import { SQLContext } from "../Context";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { SvgIcon } from "@material-ui/core";
 
 function Navigation() {
   const { setNavToggle } = useContext(SQLContext);
 
   return (
     <NavigationStyled>
-      <div className="avatar"></div>
+      <div className="nav-logo">
+        <NavLink to="/">
+          <div className="navbar-brand">
+            <SvgIcon className="brand-icon">
+              <path
+                fill="currentColor"
+                d="M12,3C7.58,3 4,4.79 4,7C4,9.21 7.58,11 12,11C16.42,11 20,9.21 20,7C20,4.79 16.42,3 12,3M4,9V12C4,14.21 7.58,16 12,16C16.42,16 20,14.21 20,12V9C20,11.21 16.42,13 12,13C7.58,13 4,11.21 4,9M4,14V17C4,19.21 7.58,21 12,21C16.42,21 20,19.21 20,17V14C20,16.21 16.42,18 12,18C7.58,18 4,16.21 4,14Z"
+              />
+            </SvgIcon>
+
+            <p className="navbar-text">SQL EDITOR</p>
+          </div>
+        </NavLink>
+      </div>
       <ul className="nav-items">
         <li className="nav-item">
           <NavLink
@@ -27,37 +41,22 @@ function Navigation() {
             exact
             onClick={() => setNavToggle(false)}
           >
-            About
+            Editor
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink
-            to="/editor"
-            activeClassName="active-class"
-            exact
-            onClick={() => setNavToggle(false)}
-          >
-            Projects
+          <NavLink to="/editor" onClick={() => setNavToggle(false)}>
+            SQL Viewer
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink
-            to="/editor"
-            activeClassName="active-class"
-            exact
-            onClick={() => setNavToggle(false)}
-          >
-            Experience
+          <NavLink to="/editor" onClick={() => setNavToggle(false)}>
+            Schema
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink
-            to="/editor"
-            activeClassName="active-class"
-            exact
-            onClick={() => setNavToggle(false)}
-          >
-            Contact
+          <NavLink to="/editor" onClick={() => setNavToggle(false)}>
+            Tutorials
           </NavLink>
         </li>
       </ul>
@@ -78,15 +77,30 @@ const NavigationStyled = styled.nav`
   height: 100%;
   width: 100%;
   border-right: 1px solid var(--border-color);
-  .avatar {
+  .nav-logo {
+    height: 10vh;
     width: 100%;
-    border-bottom: 1px solid var(--border-color);
-    text-align: center;
     padding: 1rem 0;
-    img {
-      width: 70%;
-      border-radius: 50%;
-      border: 8px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    .navbar-brand {
+      display: flex;
+      .brand-icon {
+        font-size: 1.5rem;
+        margin-right: 0.4rem;
+        @media screen and (max-width: 576px) {
+          font-size: 1.4rem;
+          margin-right: 0.3rem;
+        }
+      }
+      .navbar-text {
+        font-size: 1.2rem;
+        @media screen and (max-width: 576px) {
+          font-size: 1.1rem;
+        }
+      }
     }
   }
 
@@ -96,6 +110,7 @@ const NavigationStyled = styled.nav`
     .active-class {
       background-color: var(--primary-color-light);
       color: white;
+      border-left: 1rem solid var(--navigation-link-color);
     }
     li {
       display: block;

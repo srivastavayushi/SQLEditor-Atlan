@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { SQLContext } from "../Context";
@@ -17,7 +17,7 @@ import TurnedInNotOutlinedIcon from "@material-ui/icons/TurnedInNotOutlined";
 
 const Navbar = () => {
   const { navToggle, setNavToggle } = useContext(SQLContext);
-  const [dropdown, setDropdown] = React.useState(null);
+  const [dropdown, setDropdown] = useState(null);
   const handleClick = (event) => {
     setDropdown(event.currentTarget);
   };
@@ -27,11 +27,6 @@ const Navbar = () => {
 
   return (
     <NavbarStyled>
-      <div className="ham-burger-menu">
-        <IconButton onClick={() => setNavToggle(!navToggle)}>
-          <MenuIcon />
-        </IconButton>
-      </div>
       <div className="navbar">
         <Link to="/">
           <div className="navbar-brand">
@@ -45,7 +40,7 @@ const Navbar = () => {
             <p className="navbar-text">SQL EDITOR</p>
           </div>
         </Link>
-        <div>
+        <div className="navbar-buttons">
           <Button
             aria-controls="navbar-menu"
             aria-haspopup="true"
@@ -59,10 +54,20 @@ const Navbar = () => {
             id="navbar-menu"
             anchorEl={dropdown}
             keepMounted
+            elevation={0}
+            getContentAnchorEl={null}
             open={Boolean(dropdown)}
             onClose={handleClose}
             className="navbar-menu"
             MenuListProps={{ onMouseLeave: handleClose }}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "center",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "center",
+            }}
           >
             <MenuItem>
               <AccountBalanceWalletOutlinedIcon /> My account
@@ -77,6 +82,11 @@ const Navbar = () => {
               <ExitToAppOutlinedIcon /> Logout
             </MenuItem>
           </Menu>
+          <div className="ham-burger-menu">
+            <IconButton onClick={() => setNavToggle(!navToggle)}>
+              <MenuIcon />
+            </IconButton>
+          </div>
         </div>
       </div>
     </NavbarStyled>
@@ -93,37 +103,40 @@ const NavbarStyled = styled.main`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 1px solid var(--border-color);
     .navbar-brand {
       display: flex;
+      justify-content: center;
+      align-items: center;
       .brand-icon {
-        font-size: 1.6rem;
-        margin: 0 0.4rem;
+        font-size: 1.5rem;
+        margin-right: 0.4rem;
         @media screen and (max-width: 576px) {
           font-size: 1.4rem;
-          margin: 0 0.3rem;
+          margin-right: 0.3rem;
         }
       }
       .navbar-text {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
         @media screen and (max-width: 576px) {
-          font-size: 1.2rem;
+          font-size: 1.1rem;
         }
       }
     }
-    .navbar-item {
-      font-size: 1rem;
-      text-transform: none;
-      color: var(--font-light-color);
-      margin: 0 0.4rem;
-      @media screen and (max-width: 576px) {
-        font-size: 0.8rem;
+    .navbar-buttons {
+      display: flex;
+      .navbar-item {
+        font-size: 1rem;
+        text-transform: none;
+        color: var(--font-light-color);
+        margin: 0 0.4rem;
+        @media screen and (max-width: 576px) {
+          font-size: 0.8rem;
+        }
       }
-    }
-    .navbar-item-color {
-      color: var(--font-light-color);
-    }
-    .navbar-menu {
-      background-color: var(--sidebar-dark-color);
+      .navbar-item-color {
+        color: var(--font-light-color);
+      }
     }
   }
 `;
