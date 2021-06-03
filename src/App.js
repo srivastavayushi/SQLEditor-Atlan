@@ -55,7 +55,7 @@ function App() {
 const AppContentStyled = styled.main`
   .light-dark-mode {
     position: fixed;
-    top: 1rem;
+    top: 5rem;
     right: 0;
     @media screen and (max-width: 1200px) {
       top: 5rem;
