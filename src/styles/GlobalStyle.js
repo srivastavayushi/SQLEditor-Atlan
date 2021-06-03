@@ -76,7 +76,6 @@ body{
     background-color: var(--background-dark-color);
     color: var(--font-light-color);
     transition: all .4s ease-in-out;
-    
 }
 
 body::-webkit-scrollbar{
@@ -101,16 +100,16 @@ a{
 }
 
 h1{
-    font-size: 4rem;
+    font-size: 3rem;
     color: var(--white-color);
     span{
-        font-size: 4rem;
+        font-size: 3rem;
         @media screen and (max-width: 502px){
-            font-size: 3rem
+            font-size: 2rem;
         }
     }
     @media screen and (max-width: 502px){
-        font-size: 3rem
+        font-size: 2rem;
     }
 }
 

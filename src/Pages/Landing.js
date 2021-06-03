@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
-import { InnerLayout } from "../styles/Layouts";
 import styled from "styled-components";
 import { SvgIcon } from "@material-ui/core";
 import PrimaryButton from "../components/PrimaryButton";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+
 const Landing = () => {
   return (
     <LandingStyled>
@@ -20,32 +20,26 @@ const Landing = () => {
           <p className="navbar-text">SQL EDITOR</p>
         </div>
       </div>
-      <InnerLayout>
-        <div className="typography">
-          <h1>
-            Do <span>Query</span> like never before.
-          </h1>
-          <p>
-            A small sql editor where you can do queries
-            <br /> on sql tables effortlessly :)
-          </p>
+
+      <div className="typography">
+        <h1>
+          Do <span>Query</span> like never before.
+        </h1>
+        <h2>
+          A small sql editor where you can do queries
+          <br /> on sql tables effortlessly :)
+        </h2>
+        <div>
           <Link to="/editor">
             <PrimaryButton>
-              Get started
-              <ArrowForwardIcon className="icon" />
+              <div>
+                Try it for free
+                <ArrowForwardIosIcon className="icon" />
+              </div>
             </PrimaryButton>
           </Link>
         </div>
-        <div className="product__container">
-          <Link to="/editor">
-            <img
-              src={`${process.env.PUBLIC_URL}/sqlBanner.png`}
-              alt="sql editor"
-              className="product"
-            />
-          </Link>
-        </div>
-      </InnerLayout>
+      </div>
     </LandingStyled>
   );
 };
@@ -53,7 +47,6 @@ const Landing = () => {
 const LandingStyled = styled.header`
   width: 100%;
   height: 100vh;
-  max-height: 100vh;
   .navbar {
     height: 10vh;
     padding: 1rem;
@@ -62,16 +55,47 @@ const LandingStyled = styled.header`
       .brand-icon {
         font-size: 2rem;
         margin: 0 1rem;
+        @media screen and (max-width: 576px) {
+          font-size: 1.7rem;
+          margin: 0 0.5rem;
+        }
       }
       .navbar-text {
         font-size: 1.8rem;
+        @media screen and (max-width: 576px) {
+          font-size: 1.4rem;
+        }
       }
     }
   }
   .typography {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     text-align: center;
-    .icon {
-      margin-left: 0.5rem;
+
+    h1 {
+      margin: 1rem;
+    }
+    h2 {
+      font-size: 1.4rem;
+      margin: 1rem;
+      @media screen and (max-width: 576px) {
+        font-size: 1.1rem;
+      }
+    }
+    div {
+      margin: 1rem;
+      div {
+        display: flex;
+        font-weight: bold;
+      }
+      .icon {
+        margin-left: 0.5rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
     }
   }
 `;

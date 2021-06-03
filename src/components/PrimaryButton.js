@@ -7,7 +7,7 @@ function PrimaryButton({ children }) {
 
 const PrimaryButtonStyled = styled.a`
   background-color: var(--primary-color);
-  padding: 0.8rem 2.5rem;
+  padding: 0.4rem 2rem;
   color: white;
   cursor: pointer;
   display: inline-block;
