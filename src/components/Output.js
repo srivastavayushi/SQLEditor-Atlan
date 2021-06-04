@@ -8,12 +8,19 @@ const Output = ({ srcDoc }) => {
         <div className="output-container">
           <div className="output-title">Output</div>
           <div className="output-wrapper">
-            <iframe
+            {/* <iframe
               srcDoc="Hi My name is Shivansh"
               title="output"
               sandbox="allow-scripts"
               frameBorder="0"
-            />
+            /> */}
+            <p className="">
+              Execute a valid query first, Like:
+              <br />
+              <br />
+              <span className="">SELECT * FROM {"  "}</span>
+              ORDERS
+            </p>
           </div>
         </div>
       </div>
@@ -41,15 +48,17 @@ const OutputStyled = styled.div`
     padding: 1rem;
     border-top-right-radius: 0.2rem;
     border-top-left-radius: 0.2rem;
+    border-bottom: 1px solid var(--border-color);
   }
 
   .output-wrapper {
     flex-grow: 1;
+    background-color: var(--sidebar-dark-color);
     transition: all 0.3s ease;
     border-bottom-right-radius: 0.2rem;
     border-bottom-left-radius: 0.2rem;
     overflow: hidden;
-    background-color: var(--font-light-color);
+    padding: 1rem;
     color: var(--font-light-color);
   }
 `;

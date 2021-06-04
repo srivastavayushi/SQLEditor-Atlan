@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import { Controlled as ControlledEditor } from "react-codemirror2";
 import "codemirror/lib/codemirror.css";
 import "codemirror/theme/material-palenight.css";
+import "codemirror/theme/neo.css";
 import "codemirror/mode/sql/sql";
-import "codemirror/addon/display/autorefresh";
-import "codemirror/addon/comment/comment";
 import "codemirror/addon/edit/matchbrackets";
 import "codemirror/keymap/sublime";
+import "codemirror/addon/hint/sql-hint.js";
 import ExpandLessOutlinedIcon from "@material-ui/icons/ExpandLessOutlined";
 import ExpandMoreOutlinedIcon from "@material-ui/icons/ExpandMoreOutlined";
+import { SQLContext } from "../Context";
 
 const Editor = ({ query, setQuery }) => {
   const [open, setOpen] = useState(true);
+  const { editorTheme } = useContext(SQLContext);
 
   return (
     <EditorStyled>
@@ -35,13 +37,14 @@ const Editor = ({ query, setQuery }) => {
             value={query}
             className="code-mirror-wrapper"
             options={{
-              lineWrapping: true,
               lint: true,
               mode: "sql",
-              theme: "material-palenight",
+              theme: editorTheme,
               lineNumbers: true,
-              tabSize: 2,
               keyMap: "sublime",
+              matchBrackets: true,
+              addModeClass: true,
+              showHint: true,
             }}
           />
         </div>
@@ -51,7 +54,7 @@ const Editor = ({ query, setQuery }) => {
 };
 
 const EditorStyled = styled.div`
-  margin: 1rem;
+  margin: 0 1rem 1rem 1rem;
 
   .editor-pane {
     display: flex;
@@ -79,6 +82,12 @@ const EditorStyled = styled.div`
 
   .CodeMirror {
     height: 100%;
+    font-family: Inconsolata, monospace;
+    font-size: 11pt;
+  }
+
+  .CodeMirror-lines {
+    padding: 1rem 0.5rem;
   }
 
   .expand-collapse-btn {
@@ -104,8 +113,6 @@ const EditorStyled = styled.div`
     border-bottom-right-radius: 0.2rem;
     border-bottom-left-radius: 0.2rem;
     overflow: hidden;
-    background-color: var(--sidebar-dark-color);
-    color: var(--font-light-color);
     transition: all 0.3s ease;
   }
 `;

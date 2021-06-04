@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Switch as Switching, Route } from "react-router-dom";
 import styled from "styled-components";
 import Landing from "./Pages/Landing";
 import EditorPage from "./Pages/EditorPage";
 import Brightness4Icon from "@material-ui/icons/Brightness4";
 import Switch from "@material-ui/core/Switch";
+import { SQLContext } from "./Context";
 
 function App() {
-  const [theme, setTheme] = useState("dark-theme");
+  const { theme, setTheme, setEditorTheme } = useContext(SQLContext);
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
@@ -18,9 +19,11 @@ function App() {
     if (theme === "light-theme") {
       setTheme("dark-theme");
       setChecked(false);
+      setEditorTheme("material-palenight");
     } else {
       setTheme("light-theme");
       setChecked(true);
+      setEditorTheme("neo");
     }
   };
 

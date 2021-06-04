@@ -1,32 +1,39 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import { SQLContext } from "../Context";
 import Sidebar from "../components/Sidebar";
 import Editor from "../components/Editor";
 import Output from "../components/Output";
+import EditorButton from "../components/EditorButton";
+import PlayArrowOutlinedIcon from "@material-ui/icons/PlayArrowOutlined";
+import ClearAllOutlinedIcon from "@material-ui/icons/ClearAllOutlined";
 
 const EditorPage = () => {
   const { navToggle } = useContext(SQLContext);
   const [srcDoc, setSrcDoc] = useState("");
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState("SELECT * FROM ORDERS");
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setSrcDoc(`
-        
-      `);
-    }, 250);
-
-    return () => clearTimeout(timeout);
-  }, [query]);
+  const handleClearClick = () => {
+    setQuery("");
+  };
 
   return (
     <>
       <Sidebar navToggle={navToggle} />
       <Navbar />
       <EditorPageStyled>
-        <div className="editor-buttons">buttons</div>
+        <div className="editor-buttons">
+          <EditorButton title={"Run"}>
+            <PlayArrowOutlinedIcon className="editor-buttons-icon" />
+          </EditorButton>
+          <EditorButton title={"Clear"}>
+            <ClearAllOutlinedIcon
+              className="editor-buttons-icon"
+              onClick={handleClearClick}
+            />
+          </EditorButton>
+        </div>
         <div className="pane">
           <Editor query={query} setQuery={setQuery} />
           <Output srcDoc={srcDoc} />
@@ -44,6 +51,14 @@ const EditorPageStyled = styled.main`
   background-color: var(--background-dark-color);
   .editor-buttons {
     height: 10vh;
+    display: flex;
+    align-items: center;
+    .editor-buttons-icon {
+      font-size: 1.3rem;
+      vertical-align: bottom;
+
+      color: var(--font-light-color);
+    }
   }
   .pane {
     height: 80vh;
