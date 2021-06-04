@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Switch as Switching, Route } from "react-router-dom";
 import styled from "styled-components";
 import Landing from "./Pages/Landing";
-import Editor from "./Pages/Editor";
+import EditorPage from "./Pages/EditorPage";
 import Brightness4Icon from "@material-ui/icons/Brightness4";
 import Switch from "@material-ui/core/Switch";
 
@@ -46,7 +46,7 @@ function App() {
       </div>
       <Switching>
         <Route exact path="/" component={Landing} />
-        <Route exact path="/editor" component={Editor} />
+        <Route exact path="/editor" component={EditorPage} />
       </Switching>
     </AppContentStyled>
   );

@@ -110,7 +110,8 @@ const NavigationStyled = styled.nav`
     .active-class {
       background-color: var(--primary-color-light);
       color: white;
-      border-left: 1rem solid var(--navigation-link-color);
+
+      box-shadow: 1rem 0px 0px 0px var(--navigation-link-color) inset;
     }
     li {
       display: block;

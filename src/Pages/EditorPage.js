@@ -1,24 +1,26 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { SQLContext } from "../Context";
 import Sidebar from "../components/Sidebar";
+import Editor from "../components/Editor";
 
-const Editor = () => {
+const EditorPage = () => {
   const { navToggle } = useContext(SQLContext);
 
   return (
     <>
       <Sidebar navToggle={navToggle} />
       <Navbar />
-      <EditorStyled></EditorStyled>
+      <EditorPageStyled>
+        <Editor />
+      </EditorPageStyled>
     </>
   );
 };
-export default Editor;
+export default EditorPage;
 
-const EditorStyled = styled.main`
+const EditorPageStyled = styled.main`
   position: relative;
   margin-left: 16.3rem;
   min-height: 90vh;
