@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import styled from "styled-components";
-import { Controlled as ControlledEditor } from "react-codemirror2";
+import { Controlled as CodeMirror } from "react-codemirror2";
 import "codemirror/lib/codemirror.css";
 import "codemirror/theme/material-palenight.css";
 import "codemirror/theme/neo.css";
@@ -30,10 +30,11 @@ const Editor = ({ query, setQuery }) => {
               {open ? <ExpandLessOutlinedIcon /> : <ExpandMoreOutlinedIcon />}
             </button>
           </div>
-          <ControlledEditor
+          <CodeMirror
             onBeforeChange={(editor, data, value) => {
               setQuery(value);
             }}
+            name="Editor"
             value={query}
             className="code-mirror-wrapper"
             options={{
@@ -82,8 +83,10 @@ const EditorStyled = styled.div`
 
   .CodeMirror {
     height: 100%;
+  }
+  .CodeMirror span {
     font-family: Inconsolata, monospace;
-    font-size: 11pt;
+    font-size: 1rem;
   }
 
   .CodeMirror-lines {
