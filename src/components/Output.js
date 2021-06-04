@@ -1,20 +1,16 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Controlled as ControlledEditor } from "react-codemirror2";
-import "codemirror/lib/codemirror.css";
-import "codemirror/theme/material.css";
-import "codemirror/mode/sql/sql";
 import ExpandLessOutlinedIcon from "@material-ui/icons/ExpandLessOutlined";
 import ExpandMoreOutlinedIcon from "@material-ui/icons/ExpandMoreOutlined";
 
-const Editor = ({ query, setQuery }) => {
+const Output = ({ srcDoc }) => {
   const [open, setOpen] = useState(true);
 
   return (
-    <EditorStyled>
-      <div className="editor-pane">
-        <div className={`editor-container ${open ? "" : "collapsed"}`}>
-          <div className="editor-title">
+    <OutputStyled>
+      <div className="output-pane">
+        <div className={`output-container ${open ? "" : "collapsed"}`}>
+          <div className="output-title">
             Enter Queries Here
             <button
               type="button"
@@ -24,48 +20,37 @@ const Editor = ({ query, setQuery }) => {
               {open ? <ExpandLessOutlinedIcon /> : <ExpandMoreOutlinedIcon />}
             </button>
           </div>
-          <ControlledEditor
-            onBeforeChange={(editor, data, value) => {
-              setQuery(value);
-            }}
-            value={query}
+          <iframe
+            srcDoc={srcDoc}
+            title="output"
+            sandbox="allow-scripts"
+            frameBorder="0"
+            width="100%"
+            height="100%"
             className="code-mirror-wrapper"
-            options={{
-              lineWrapping: true,
-              lint: true,
-              mode: "sql",
-              theme: "material",
-              lineNumbers: true,
-            }}
           />
         </div>
       </div>
-    </EditorStyled>
+    </OutputStyled>
   );
 };
 
-const EditorStyled = styled.div`
-  .editor-pane {
-    height: 40vh;
+const OutputStyled = styled.div`
+  .output-pane {
+    height: 40%;
     margin: 1rem;
     display: flex;
   }
-  .editor-container {
+  .output-container {
     flex-grow: 1;
+    flex-basis: 0;
     display: flex;
     flex-direction: column;
+    transition: all 0.3s ease;
   }
 
-  .editor-container.collapsed .code-mirror-wrapper {
+  .output-container.collapsed {
     flex-grow: 0;
-  }
-
-  .editor-container.collapsed .CodeMirror-scroll {
-    position: absolute;
-    overflow: hidden !important;
-  }
-  .CodeMirror {
-    height: 100%;
   }
 
   .expand-collapse-btn {
@@ -76,7 +61,7 @@ const EditorStyled = styled.div`
     color: var(--font-light-color);
   }
 
-  .editor-title {
+  .output-title {
     display: flex;
     justify-content: space-between;
     background-color: var(--background-dark-color);
@@ -90,10 +75,9 @@ const EditorStyled = styled.div`
     border-bottom-right-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
     overflow: hidden;
-    background-color: var(--sidebar-dark-color);
+    background-color: var(--background-dark-color);
     color: var(--font-light-color);
-    transition: all 0.3s ease;
   }
 `;
 
-export default Editor;
+export default Output;

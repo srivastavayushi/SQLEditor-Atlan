@@ -1,19 +1,36 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import { SQLContext } from "../Context";
 import Sidebar from "../components/Sidebar";
 import Editor from "../components/Editor";
+import Output from "../components/Output";
 
 const EditorPage = () => {
   const { navToggle } = useContext(SQLContext);
+  const [srcDoc, setSrcDoc] = useState("");
+  const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setSrcDoc(`
+        
+      `);
+    }, 250);
+
+    return () => clearTimeout(timeout);
+  }, [query]);
 
   return (
     <>
       <Sidebar navToggle={navToggle} />
       <Navbar />
       <EditorPageStyled>
-        <Editor />
+        <div className="editor-buttons">buttons</div>
+        <div className="pane">
+          <Editor query={query} setQuery={setQuery} />
+          <Output srcDoc={srcDoc} />
+        </div>
       </EditorPageStyled>
     </>
   );
@@ -25,6 +42,13 @@ const EditorPageStyled = styled.main`
   margin-left: 16.3rem;
   min-height: 90vh;
   background-color: var(--sidebar-dark-color);
+  .editor-buttons {
+    height: 10vh;
+  }
+  .pane {
+    width: 100%;
+  }
+
   @media screen and (max-width: 1280px) {
     margin-left: 12rem;
   }
