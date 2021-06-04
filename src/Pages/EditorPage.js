@@ -41,12 +41,15 @@ const EditorPageStyled = styled.main`
   position: relative;
   margin-left: 16.3rem;
   min-height: 90vh;
-  background-color: var(--sidebar-dark-color);
+  background-color: var(--background-dark-color);
   .editor-buttons {
     height: 10vh;
   }
   .pane {
+    height: 80vh;
     width: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   @media screen and (max-width: 1280px) {

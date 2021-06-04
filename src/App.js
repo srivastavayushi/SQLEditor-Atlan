@@ -57,9 +57,6 @@ const AppContentStyled = styled.main`
     position: fixed;
     top: 12vh;
     right: 0;
-    @media screen and (max-width: 1200px) {
-      top: 5rem;
-    }
   }
 `;
 

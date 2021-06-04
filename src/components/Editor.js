@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Controlled as ControlledEditor } from "react-codemirror2";
 import "codemirror/lib/codemirror.css";
-import "codemirror/theme/material.css";
+import "codemirror/theme/material-palenight.css";
 import "codemirror/mode/sql/sql";
+import "codemirror/addon/display/autorefresh";
+import "codemirror/addon/comment/comment";
+import "codemirror/addon/edit/matchbrackets";
+import "codemirror/keymap/sublime";
 import ExpandLessOutlinedIcon from "@material-ui/icons/ExpandLessOutlined";
 import ExpandMoreOutlinedIcon from "@material-ui/icons/ExpandMoreOutlined";
 
@@ -12,8 +16,8 @@ const Editor = ({ query, setQuery }) => {
 
   return (
     <EditorStyled>
-      <div className="editor-pane">
-        <div className={`editor-container ${open ? "" : "collapsed"}`}>
+      <div className={`editor-pane ${open ? "" : "collapsed"}`}>
+        <div className="editor-container">
           <div className="editor-title">
             Enter Queries Here
             <button
@@ -34,8 +38,10 @@ const Editor = ({ query, setQuery }) => {
               lineWrapping: true,
               lint: true,
               mode: "sql",
-              theme: "material",
+              theme: "material-palenight",
               lineNumbers: true,
+              tabSize: 2,
+              keyMap: "sublime",
             }}
           />
         </div>
@@ -45,25 +51,32 @@ const Editor = ({ query, setQuery }) => {
 };
 
 const EditorStyled = styled.div`
+  margin: 1rem;
+
   .editor-pane {
-    height: 40vh;
-    margin: 1rem;
     display: flex;
+    height: 100%;
   }
   .editor-container {
-    flex-grow: 1;
+    width: 100%;
     display: flex;
     flex-direction: column;
   }
 
-  .editor-container.collapsed .code-mirror-wrapper {
+  .collapsed .code-mirror-wrapper {
     flex-grow: 0;
+    height: 0;
   }
 
-  .editor-container.collapsed .CodeMirror-scroll {
+  .collapsed .CodeMirror-scroll {
     position: absolute;
     overflow: hidden !important;
   }
+
+  .collapsed .editor-title {
+    border-radius: 0.2rem;
+  }
+
   .CodeMirror {
     height: 100%;
   }
@@ -79,16 +92,17 @@ const EditorStyled = styled.div`
   .editor-title {
     display: flex;
     justify-content: space-between;
-    background-color: var(--background-dark-color);
+    background-color: var(--sidebar-dark-color);
     padding: 1rem 1rem 0.5rem 1rem;
-    border-top-right-radius: 0.5rem;
-    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.2rem;
+    border-top-left-radius: 0.2rem;
   }
 
   .code-mirror-wrapper {
+    height: 30vh;
     flex-grow: 1;
-    border-bottom-right-radius: 0.5rem;
-    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.2rem;
+    border-bottom-left-radius: 0.2rem;
     overflow: hidden;
     background-color: var(--sidebar-dark-color);
     color: var(--font-light-color);

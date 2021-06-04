@@ -99,7 +99,7 @@ const NavbarStyled = styled.main`
   .navbar {
     height: 10vh;
     padding: 1rem;
-    background-color: var(--background-dark-color);
+    background-color: var(--sidebar-dark-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
