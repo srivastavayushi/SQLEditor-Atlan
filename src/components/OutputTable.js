@@ -21,38 +21,60 @@ const OutputTable = () => {
 
   return (
     <OutputTableStyled>
-      <table className="table">
+      <table>
         {
-          <tr className="row">
+          <tr>
             {columns.map((column) => (
-              <th className="row__cell header">
-                <p className="success">{column.toUpperCase()}</p>
+              <th>
+                <p>{column.toUpperCase()}</p>
               </th>
             ))}
           </tr>
         }
         {data.map((row) => (
-          <tr className="row">
+          <tr>
             {columns.map((col) => (
-              <td className="cell row__cell">
+              <td>
                 <p>{row[col]}</p>
               </td>
             ))}
           </tr>
         ))}
       </table>
-      <CSVLink {...csvReport}>
-        <span className="download">
-          <GetAppOutlinedIcon className="icon success" />
-          <span className="success link">Download CSV</span>
-        </span>
-      </CSVLink>
     </OutputTableStyled>
   );
 };
 
 const OutputTableStyled = styled.div`
   width: 100%;
+  overflow-x: auto;
+  table,
+  th,
+  td {
+    border: 2px solid var(--border-color);
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th {
+    padding: 0.5rem 1rem;
+  }
+  th p {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+  }
+  td {
+    padding: 0.5rem 1rem;
+    text-align: center;
+    width: 11.11%;
+  }
+  td p {
+    font-size: 0.8rem;
+    color: var(--white-color);
+  }
+
   &::-webkit-scrollbar {
     width: 0.8rem;
   }
@@ -61,6 +83,9 @@ const OutputTableStyled = styled.div`
   }
   &::-webkit-scrollbar-track {
     background-color: var(--font-light-color);
+  }
+
+  @media screen and (max-width: 1800px) {
   }
 `;
 

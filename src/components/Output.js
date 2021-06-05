@@ -1,28 +1,33 @@
 import React from "react";
 import styled from "styled-components";
 import OutputTable from "./OutputTable";
+import GetAppOutlinedIcon from "@material-ui/icons/GetAppOutlined";
+import { CSVLink } from "react-csv";
 
-const Output = ({ srcDoc }) => {
+const Output = ({}) => {
   return (
     <OutputStyled>
       <div className="output-pane">
         <div className="output-container">
-          <div className="output-title">Output</div>
+          <div className="output-title">
+            Output {/*  <CSVLink {...csvReport} > */}
+            <span className="download_csv">
+              <GetAppOutlinedIcon className="icon success" />
+            </span>
+            {/* </CSVLink> */}
+          </div>
           <div className="output-wrapper">
-            {/* <iframe
-              srcDoc="Hi My name is Shivansh"
-              title="output"
-              sandbox="allow-scripts"
-              frameBorder="0"
-            /> */}
-            <OutputTable />
-            {/* <p className="">
-              Execute a valid query first, Like:
-              <br />
-              <br />
-              <span className="">SELECT * FROM {"  "}</span>
-              ORDERS
-            </p> */}
+            {/*  <OutputTable /> */}
+            <div className="">Execute some sample queries,</div>
+            <br />
+            <div className="output-queries">
+              <div>Example: </div>
+              <div className="output-queries-example">
+                <div>SELECT * FROM customers</div>
+                <div>SELECT contactName,city,country FROM customers</div>
+                <div>SELECT * FROM customers WHERE country="Germany"</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -62,6 +67,18 @@ const OutputStyled = styled.div`
     overflow: hidden;
     padding: 1rem;
     color: var(--font-light-color);
+
+    .output-queries {
+      display: flex;
+      .output-queries-example {
+        margin-left: 1rem;
+        color: var(--primary-color);
+        div {
+          margin-bottom: 0.5rem;
+          font-size: 1rem;
+        }
+      }
+    }
   }
 `;
 

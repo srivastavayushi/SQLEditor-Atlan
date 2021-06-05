@@ -84,7 +84,7 @@ const Navbar = () => {
           </Menu>
           <div className="ham-burger-menu">
             <IconButton onClick={() => setNavToggle(!navToggle)}>
-              <MenuIcon />
+              <MenuIcon className="primary-text" />
             </IconButton>
           </div>
         </div>

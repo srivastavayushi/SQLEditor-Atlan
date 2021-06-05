@@ -91,6 +91,10 @@ body::-webkit-scrollbar-track{
     background-color: var(--font-light-color);
 }
 
+.primary-text{
+    color: var(--primary-color);
+}
+
 a{
     font-family: inherit;
     color: inherit;

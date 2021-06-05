@@ -11,11 +11,22 @@ import ClearAllOutlinedIcon from "@material-ui/icons/ClearAllOutlined";
 
 const EditorPage = () => {
   const { navToggle } = useContext(SQLContext);
-  const [srcDoc, setSrcDoc] = useState("");
-  const [query, setQuery] = useState("SELECT * FROM ORDERS");
+  const [jsonData, setJsonData] = useState();
+  const [query, setQuery] = useState("SELECT * FROM customers");
 
   const handleClearClick = () => {
     setQuery("");
+  };
+
+  const handleRunClick = () => {
+    if (query.toUpperCase === "SELECT * FROM CUSTOMERS") {
+    } else if (
+      query.toUpperCase === "SELECT CONTACTNAME,CITY,COUNTRY FROM CUSTOMERS"
+    ) {
+    } else if (
+      query.toUpperCase === `SELECT * FROM CUSTOMERS WHERE COUNTRY="GERMANY"`
+    ) {
+    }
   };
 
   return (
@@ -25,7 +36,10 @@ const EditorPage = () => {
       <EditorPageStyled>
         <div className="editor-buttons">
           <EditorButton title={"Run"}>
-            <PlayArrowOutlinedIcon className="editor-buttons-icon" />
+            <PlayArrowOutlinedIcon
+              className="editor-buttons-icon"
+              onClick={handleRunClick}
+            />
           </EditorButton>
           <EditorButton title={"Clear"}>
             <ClearAllOutlinedIcon
@@ -36,7 +50,7 @@ const EditorPage = () => {
         </div>
         <div className="pane">
           <Editor query={query} setQuery={setQuery} />
-          <Output srcDoc={srcDoc} />
+          <Output />
         </div>
       </EditorPageStyled>
     </>
