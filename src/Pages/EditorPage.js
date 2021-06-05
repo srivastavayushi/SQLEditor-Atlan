@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import { SQLContext } from "../Context";
@@ -10,22 +10,25 @@ import PlayArrowOutlinedIcon from "@material-ui/icons/PlayArrowOutlined";
 import ClearAllOutlinedIcon from "@material-ui/icons/ClearAllOutlined";
 
 const EditorPage = () => {
-  const { navToggle } = useContext(SQLContext);
-  const [jsonData, setJsonData] = useState();
-  const [query, setQuery] = useState("SELECT * FROM customers");
-
+  const { navToggle, setDataOption, query, setQuery } = useContext(SQLContext);
   const handleClearClick = () => {
     setQuery("");
+    setDataOption("");
   };
 
   const handleRunClick = () => {
     if (query.toUpperCase === "SELECT * FROM CUSTOMERS") {
-    } else if (
+      setDataOption("data");
+    }
+    if (
       query.toUpperCase === "SELECT CONTACTNAME,CITY,COUNTRY FROM CUSTOMERS"
     ) {
-    } else if (
+      setDataOption("data2");
+    }
+    if (
       query.toUpperCase === `SELECT * FROM CUSTOMERS WHERE COUNTRY="GERMANY"`
     ) {
+      setDataOption("data3");
     }
   };
 
@@ -35,21 +38,15 @@ const EditorPage = () => {
       <Navbar />
       <EditorPageStyled>
         <div className="editor-buttons">
-          <EditorButton title={"Run"}>
-            <PlayArrowOutlinedIcon
-              className="editor-buttons-icon"
-              onClick={handleRunClick}
-            />
+          <EditorButton title={"Run"} onClick={handleRunClick}>
+            <PlayArrowOutlinedIcon className="editor-buttons-icon" />
           </EditorButton>
-          <EditorButton title={"Clear"}>
-            <ClearAllOutlinedIcon
-              className="editor-buttons-icon"
-              onClick={handleClearClick}
-            />
+          <EditorButton title={"Clear"} onClick={handleClearClick}>
+            <ClearAllOutlinedIcon className="editor-buttons-icon" />
           </EditorButton>
         </div>
         <div className="pane">
-          <Editor query={query} setQuery={setQuery} />
+          <Editor />
           <Output />
         </div>
       </EditorPageStyled>

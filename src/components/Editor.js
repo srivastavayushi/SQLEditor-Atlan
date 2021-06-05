@@ -12,9 +12,9 @@ import ExpandLessOutlinedIcon from "@material-ui/icons/ExpandLessOutlined";
 import ExpandMoreOutlinedIcon from "@material-ui/icons/ExpandMoreOutlined";
 import { SQLContext } from "../Context";
 
-const Editor = ({ query, setQuery }) => {
+const Editor = () => {
   const [open, setOpen] = useState(true);
-  const { editorTheme } = useContext(SQLContext);
+  const { editorTheme, query, setQuery } = useContext(SQLContext);
 
   return (
     <EditorStyled>

@@ -1,33 +1,48 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import OutputTable from "./OutputTable";
+import { SQLContext } from "../Context";
 import GetAppOutlinedIcon from "@material-ui/icons/GetAppOutlined";
 import { CSVLink } from "react-csv";
+import data from "../customers.json";
+import data2 from "../customers2.json";
+import data3 from "../customers3.json";
 
-const Output = ({}) => {
+const Output = () => {
+  const { dataOption } = useContext(SQLContext);
+
   return (
     <OutputStyled>
       <div className="output-pane">
         <div className="output-container">
           <div className="output-title">
-            Output {/*  <CSVLink {...csvReport} > */}
-            <span className="download_csv">
-              <GetAppOutlinedIcon className="icon success" />
-            </span>
-            {/* </CSVLink> */}
+            Output{" "}
+            {/* {dataOption !== "" && (
+              <CSVLink {...csvReport}>
+                <span className="download_csv">
+                  <GetAppOutlinedIcon />
+                </span>
+              </CSVLink> 
+            )}*/}
           </div>
           <div className="output-wrapper">
-            {/*  <OutputTable /> */}
-            <div className="">Execute some sample queries,</div>
-            <br />
-            <div className="output-queries">
-              <div>Example: </div>
-              <div className="output-queries-example">
-                <div>SELECT * FROM customers</div>
-                <div>SELECT contactName,city,country FROM customers</div>
-                <div>SELECT * FROM customers WHERE country="Germany"</div>
-              </div>
-            </div>
+            {dataOption === "data" && <OutputTable data={data} />}
+            {dataOption === "data2" && <OutputTable data={data2} />}
+            {dataOption === "data3" && <OutputTable data={data3} />}
+            {dataOption === "" && (
+              <>
+                <div className="">Execute some sample queries,</div>
+                <br />
+                <div className="output-queries">
+                  <div>Example: </div>
+                  <div className="output-queries-example">
+                    <div>SELECT * FROM customers</div>
+                    <div>SELECT contactName,city,country FROM customers</div>
+                    <div>SELECT * FROM customers WHERE country="Germany"</div>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>

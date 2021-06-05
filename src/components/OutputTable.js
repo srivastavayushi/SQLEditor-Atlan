@@ -1,10 +1,7 @@
 import React from "react";
-import data from "../customers.json";
-import GetAppOutlinedIcon from "@material-ui/icons/GetAppOutlined";
-import { CSVLink } from "react-csv";
 import styled from "styled-components";
 
-const OutputTable = () => {
+const OutputTable = ({ data }) => {
   const columns = Object.keys(data[0]);
   const headers = columns.map((col) => {
     return {
@@ -18,28 +15,31 @@ const OutputTable = () => {
     headers: headers,
     filename: "customers.csv",
   };
-
   return (
     <OutputTableStyled>
       <table>
         {
-          <tr>
+          <thead>
             {columns.map((column) => (
               <th>
                 <p>{column.toUpperCase()}</p>
               </th>
             ))}
-          </tr>
+          </thead>
         }
-        {data.map((row) => (
-          <tr>
-            {columns.map((col) => (
-              <td>
-                <p>{row[col]}</p>
-              </td>
+        {
+          <tbody>
+            {data.map((row) => (
+              <tr>
+                {columns.map((col) => (
+                  <td>
+                    <p>{row[col]}</p>
+                  </td>
+                ))}
+              </tr>
             ))}
-          </tr>
-        ))}
+          </tbody>
+        }
       </table>
     </OutputTableStyled>
   );

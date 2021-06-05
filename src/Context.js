@@ -6,6 +6,8 @@ const ContextProvider = ({ children }) => {
   const [navToggle, setNavToggle] = useState(false);
   const [theme, setTheme] = useState("dark-theme");
   const [editorTheme, setEditorTheme] = useState("material-palenight");
+  const [query, setQuery] = useState("SELECT * FROM customers");
+  const [dataOption, setDataOption] = useState("");
 
   return (
     <SQLContext.Provider
@@ -16,6 +18,10 @@ const ContextProvider = ({ children }) => {
         setTheme,
         editorTheme,
         setEditorTheme,
+        dataOption,
+        setDataOption,
+        query,
+        setQuery,
       }}
     >
       {children}
