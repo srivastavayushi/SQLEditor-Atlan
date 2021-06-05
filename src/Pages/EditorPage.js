@@ -17,16 +17,16 @@ const EditorPage = () => {
   };
 
   const handleRunClick = () => {
-    if (query.toUpperCase === "SELECT * FROM CUSTOMERS") {
+    if (query.toUpperCase() === "SELECT * FROM CUSTOMERS") {
       setDataOption("data");
     }
     if (
-      query.toUpperCase === "SELECT CONTACTNAME,CITY,COUNTRY FROM CUSTOMERS"
+      query.toUpperCase() === "SELECT CONTACTNAME,CITY,COUNTRY FROM CUSTOMERS"
     ) {
       setDataOption("data2");
     }
     if (
-      query.toUpperCase === `SELECT * FROM CUSTOMERS WHERE COUNTRY="GERMANY"`
+      query.toUpperCase() === `SELECT * FROM CUSTOMERS WHERE COUNTRY="GERMANY"`
     ) {
       setDataOption("data3");
     }

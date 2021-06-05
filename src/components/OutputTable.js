@@ -3,18 +3,7 @@ import styled from "styled-components";
 
 const OutputTable = ({ data }) => {
   const columns = Object.keys(data[0]);
-  const headers = columns.map((col) => {
-    return {
-      label: col,
-      key: col,
-    };
-  });
 
-  const csvReport = {
-    data: data,
-    headers: headers,
-    filename: "customers.csv",
-  };
   return (
     <OutputTableStyled>
       <table>

@@ -17,13 +17,21 @@ const Output = () => {
         <div className="output-container">
           <div className="output-title">
             Output{" "}
-            {/* {dataOption !== "" && (
-              <CSVLink {...csvReport}>
-                <span className="download_csv">
-                  <GetAppOutlinedIcon />
-                </span>
-              </CSVLink> 
-            )}*/}
+            {dataOption === "data" && (
+              <CSVLink data={data} filename={"customers.csv"}>
+                <GetAppOutlinedIcon />
+              </CSVLink>
+            )}
+            {dataOption === "data2" && (
+              <CSVLink data={data2} filename={"customers.csv"}>
+                <GetAppOutlinedIcon />
+              </CSVLink>
+            )}
+            {dataOption === "data3" && (
+              <CSVLink data={data3} filename={"customers.csv"}>
+                <GetAppOutlinedIcon />
+              </CSVLink>
+            )}
           </div>
           <div className="output-wrapper">
             {dataOption === "data" && <OutputTable data={data} />}
