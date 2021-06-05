@@ -1,25 +1,26 @@
 import React from "react";
-import data from "./orders.json";
-import { MdAttachment } from "react-icons/md";
+import data from "../customers.json";
+import GetAppOutlinedIcon from "@material-ui/icons/GetAppOutlined";
 import { CSVLink } from "react-csv";
-
-const columns = Object.keys(data[0]);
-const headers = columns.map((col) => {
-  return {
-    label: col,
-    key: col,
-  };
-});
-
-const csvReport = {
-  data: data,
-  headers: headers,
-  filename: "data.csv",
-};
+import styled from "styled-components";
 
 const OutputTable = () => {
+  const columns = Object.keys(data[0]);
+  const headers = columns.map((col) => {
+    return {
+      label: col,
+      key: col,
+    };
+  });
+
+  const csvReport = {
+    data: data,
+    headers: headers,
+    filename: "customers.csv",
+  };
+
   return (
-    <div className="table__wrapper">
+    <OutputTableStyled>
       <table className="table">
         {
           <tr className="row">
@@ -42,12 +43,25 @@ const OutputTable = () => {
       </table>
       <CSVLink {...csvReport}>
         <span className="download">
-          <MdAttachment className="icon success" />
+          <GetAppOutlinedIcon className="icon success" />
           <span className="success link">Download CSV</span>
         </span>
       </CSVLink>
-    </div>
+    </OutputTableStyled>
   );
 };
+
+const OutputTableStyled = styled.div`
+  width: 100%;
+  &::-webkit-scrollbar {
+    width: 0.8rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #2a2d3e;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: var(--font-light-color);
+  }
+`;
 
 export default OutputTable;

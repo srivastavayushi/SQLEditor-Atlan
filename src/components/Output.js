@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import OutputTable from "./OutputTable";
 
 const Output = ({ srcDoc }) => {
   return (
@@ -14,13 +15,14 @@ const Output = ({ srcDoc }) => {
               sandbox="allow-scripts"
               frameBorder="0"
             /> */}
-            <p className="">
+            <OutputTable />
+            {/* <p className="">
               Execute a valid query first, Like:
               <br />
               <br />
               <span className="">SELECT * FROM {"  "}</span>
               ORDERS
-            </p>
+            </p> */}
           </div>
         </div>
       </div>

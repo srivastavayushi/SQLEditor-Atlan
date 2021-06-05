@@ -82,18 +82,14 @@ body{
 }
 
 body::-webkit-scrollbar{
-    width: 9px;
-    background-color: #383838;
+    width: 0.8rem;
 }
 body::-webkit-scrollbar-thumb{
-    border-radius: 10px;
-    background-color: #6b6b6b;
+    background-color: #2A2D3E;
 }
 body::-webkit-scrollbar-track{
-    border-radius: 10px;
-    background-color: #383838;
+    background-color: var(--font-light-color);
 }
-
 
 a{
     font-family: inherit;
@@ -107,6 +103,7 @@ h1{
     color: var(--white-color);
     span{
         font-size: 3rem;
+        color: var(--primary-color);
         @media screen and (max-width: 502px){
             font-size: 2rem;
         }
@@ -116,9 +113,6 @@ h1{
     }
 }
 
-span{
-    color: var(--primary-color);
-}
 h6{
     color: var(--white-color);
     font-size: 1.2rem;
@@ -165,11 +159,6 @@ h6{
         display: block;
     }
   }
-
-
-//Global Media Queries
-
-
 
 `;
 
