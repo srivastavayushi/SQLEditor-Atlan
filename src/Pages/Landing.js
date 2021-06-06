@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { SvgIcon } from "@material-ui/core";
 import PrimaryButton from "../components/PrimaryButton";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import LogoSvg from "../assets/logo.svg";
 
 const Landing = () => {
   return (
@@ -40,6 +41,14 @@ const Landing = () => {
           </Link>
         </div>
       </div>
+      <footer className="footer">
+        <p>
+          Made for{" "}
+          <a href="https://atlan.com/" target="_blank" rel="noreferrer">
+            <img src={LogoSvg} alt="" className="footer-logo" />
+          </a>
+        </p>
+      </footer>
     </LandingStyled>
   );
 };
@@ -74,7 +83,7 @@ const LandingStyled = styled.header`
     }
   }
   .typography {
-    height: 80vh;
+    height: 85vh;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -101,6 +110,20 @@ const LandingStyled = styled.header`
         font-size: 1.2rem;
         font-weight: bold;
       }
+    }
+  }
+  footer {
+    width: 100%;
+
+    p {
+      font-size: 1rem;
+      display: block;
+      text-align: center;
+    }
+    .footer-logo {
+      height: 1.1rem;
+      vertical-align: top;
+      margin-left: 0.2rem;
     }
   }
 `;

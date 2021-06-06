@@ -4,6 +4,11 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { SvgIcon } from "@material-ui/core";
 import LogoSvg from "../assets/logo.svg";
+import DashboardIcon from "@material-ui/icons/Dashboard";
+import BuildIcon from "@material-ui/icons/Build";
+import CodeIcon from "@material-ui/icons/Code";
+import HomeIcon from "@material-ui/icons/Home";
+import ListAltIcon from "@material-ui/icons/ListAlt";
 
 function Navigation() {
   const { setNavToggle } = useContext(SQLContext);
@@ -32,7 +37,10 @@ function Navigation() {
             exact
             onClick={() => setNavToggle(false)}
           >
-            Home
+            <span>
+              {" "}
+              <HomeIcon className="nav-item-icon" /> Home
+            </span>
           </NavLink>
         </li>
         <li className="nav-item">
@@ -42,22 +50,34 @@ function Navigation() {
             exact
             onClick={() => setNavToggle(false)}
           >
-            Editor
+            <span>
+              {" "}
+              <CodeIcon className="nav-item-icon" /> Editor
+            </span>
           </NavLink>
         </li>
         <li className="nav-item">
           <NavLink to="/editor" onClick={() => setNavToggle(false)}>
-            SQL Viewer
+            <span>
+              {" "}
+              <DashboardIcon className="nav-item-icon" /> Dashboard
+            </span>
           </NavLink>
         </li>
         <li className="nav-item">
           <NavLink to="/editor" onClick={() => setNavToggle(false)}>
-            Schema
+            <span>
+              {" "}
+              <BuildIcon className="nav-item-icon" /> Instance
+            </span>
           </NavLink>
         </li>
         <li className="nav-item">
           <NavLink to="/editor" onClick={() => setNavToggle(false)}>
-            Tutorials
+            <span>
+              {" "}
+              <ListAltIcon className="nav-item-icon" /> Schema
+            </span>
           </NavLink>
         </li>
       </ul>
@@ -110,14 +130,22 @@ const NavigationStyled = styled.nav`
 
   .nav-items {
     width: 100%;
-    text-align: center;
     .active-class {
       background-color: var(--primary-color-light);
       color: white;
       box-shadow: 1rem 0px 0px 0px var(--navigation-link-color) inset;
     }
+    .nav-item-icon {
+      margin-right: 0.2rem;
+      vertical-align: bottom;
+      font-size: 1.2rem;
+    }
     li {
       display: block;
+      span {
+        margin-left: 20%;
+        font-size: 1rem;
+      }
       a {
         display: block;
         padding: 0.45rem 0;
