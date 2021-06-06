@@ -42,6 +42,7 @@ function App() {
                 inputProps={{ "aria-label": "Theme Switch" }}
                 size="medium"
                 onClick={themeToggler}
+                className="theme-switch"
               />
             </div>
           </div>
@@ -60,6 +61,9 @@ const AppContentStyled = styled.main`
     position: fixed;
     top: 12vh;
     right: 0;
+  }
+  .theme-switch span {
+    color: var(--primary-color);
   }
 `;
 

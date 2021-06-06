@@ -7,28 +7,27 @@ const OutputTable = ({ data }) => {
   return (
     <OutputTableStyled>
       <table>
-        {
-          <thead>
+        <thead>
+          <tr>
             {columns.map((column) => (
-              <th>
+              <th key={column}>
                 <p>{column.toUpperCase()}</p>
               </th>
             ))}
-          </thead>
-        }
-        {
-          <tbody>
-            {data.map((row) => (
-              <tr>
-                {columns.map((col) => (
-                  <td>
-                    <p>{row[col]}</p>
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        }
+          </tr>
+        </thead>
+
+        <tbody>
+          {data.map((row, index) => (
+            <tr key={index}>
+              {columns.map((col, index) => (
+                <td key={index}>
+                  <p>{row[col]}</p>
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
       </table>
     </OutputTableStyled>
   );

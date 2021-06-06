@@ -5,7 +5,7 @@ function PrimaryButton({ children }) {
   return <PrimaryButtonStyled>{children}</PrimaryButtonStyled>;
 }
 
-const PrimaryButtonStyled = styled.a`
+const PrimaryButtonStyled = styled.span`
   background-color: var(--primary-color);
   padding: 0.4rem 2rem;
   color: white;

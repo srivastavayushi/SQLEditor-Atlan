@@ -74,8 +74,18 @@ const EditorPageStyled = styled.main`
   .pane {
     height: 80vh;
     width: 100%;
+    overflow: auto;
     display: flex;
     flex-direction: column;
+    &::-webkit-scrollbar {
+      width: 0.8rem;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #2a2d3e;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: var(--font-light-color);
+    }
   }
 
   @media screen and (max-width: 1280px) {

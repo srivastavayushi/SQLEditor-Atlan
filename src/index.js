@@ -6,13 +6,13 @@ import GlobalStyle from "./styles/GlobalStyle";
 import { ContextProvider } from "./Context";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <>
     <GlobalStyle />
     <ContextProvider>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </ContextProvider>
-  </React.StrictMode>,
+  </>,
   document.getElementById("root")
 );

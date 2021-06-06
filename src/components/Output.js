@@ -7,6 +7,7 @@ import { CSVLink } from "react-csv";
 import data from "../customers.json";
 import data2 from "../customers2.json";
 import data3 from "../customers3.json";
+import Tooltip from "@material-ui/core/Tooltip";
 
 const Output = () => {
   const { dataOption } = useContext(SQLContext);
@@ -17,21 +18,9 @@ const Output = () => {
         <div className="output-container">
           <div className="output-title">
             Output{" "}
-            {dataOption === "data" && (
-              <CSVLink data={data} filename={"customers.csv"}>
-                <GetAppOutlinedIcon />
-              </CSVLink>
-            )}
-            {dataOption === "data2" && (
-              <CSVLink data={data2} filename={"customers.csv"}>
-                <GetAppOutlinedIcon />
-              </CSVLink>
-            )}
-            {dataOption === "data3" && (
-              <CSVLink data={data3} filename={"customers.csv"}>
-                <GetAppOutlinedIcon />
-              </CSVLink>
-            )}
+            {dataOption === "data" && <DownloadCSV dataToDownload={data} />}
+            {dataOption === "data2" && <DownloadCSV dataToDownload={data2} />}
+            {dataOption === "data3" && <DownloadCSV dataToDownload={data3} />}
           </div>
           <div className="output-wrapper">
             {dataOption === "data" && <OutputTable data={data} />}
@@ -58,9 +47,19 @@ const Output = () => {
   );
 };
 
+const DownloadCSV = ({ dataToDownload }) => {
+  return (
+    <Tooltip title="Download CSV">
+      <CSVLink data={dataToDownload} filename={"customers.csv"}>
+        <GetAppOutlinedIcon />
+      </CSVLink>
+    </Tooltip>
+  );
+};
+
 const OutputStyled = styled.div`
   flex-grow: 1;
-  margin: 0 1rem 1rem 1rem;
+  margin: 0 1rem 1.5rem 1rem;
   .output-pane {
     height: 100%;
     display: flex;
@@ -87,7 +86,6 @@ const OutputStyled = styled.div`
     transition: all 0.3s ease;
     border-bottom-right-radius: 0.2rem;
     border-bottom-left-radius: 0.2rem;
-    overflow: hidden;
     padding: 1rem;
     color: var(--font-light-color);
 

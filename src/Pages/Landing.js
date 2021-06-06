@@ -53,17 +53,19 @@ const LandingStyled = styled.header`
     .navbar-brand {
       display: flex;
       .brand-icon {
-        font-size: 2rem;
-        margin: 0 1rem;
+        font-size: 1.7rem;
+        margin: 0 0.5rem;
+        vertical-align: middle;
         @media screen and (max-width: 576px) {
-          font-size: 1.7rem;
-          margin: 0 0.5rem;
+          font-size: 1.5rem;
+          margin: 0 0.3rem;
         }
       }
       .navbar-text {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
+        vertical-align: middle;
         @media screen and (max-width: 576px) {
-          font-size: 1.4rem;
+          font-size: 1.3rem;
         }
       }
     }
