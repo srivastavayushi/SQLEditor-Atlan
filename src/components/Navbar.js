@@ -49,16 +49,15 @@ const Navbar = () => {
           <p className="navbar-item">shivanshpahwa</p>
           <KeyboardArrowDownOutlinedIcon className="navbar-item-color" />
         </Button>
-        <Menu
+        <StyledMenu
           id="navbar-menu"
           anchorEl={dropdown}
           keepMounted
           elevation={0}
           getContentAnchorEl={null}
           open={Boolean(dropdown)}
-          onClose={handleClose}
-          className="navbar-menu"
           MenuListProps={{ onMouseLeave: handleClose }}
+          onClose={handleClose}
           anchorOrigin={{
             vertical: "bottom",
             horizontal: "center",
@@ -68,19 +67,20 @@ const Navbar = () => {
             horizontal: "center",
           }}
         >
-          <MenuItem>
-            <AccountBalanceWalletOutlinedIcon /> My account
+          <MenuItem className="navbar-menu-items">
+            <AccountBalanceWalletOutlinedIcon />
+            <span> My account</span>
           </MenuItem>
-          <MenuItem>
-            <TurnedInNotOutlinedIcon /> Saved
+          <MenuItem className="navbar-menu-items">
+            <TurnedInNotOutlinedIcon /> <span>Saved</span>
           </MenuItem>
-          <MenuItem>
-            <HelpOutlineIcon /> Help
+          <MenuItem className="navbar-menu-items">
+            <HelpOutlineIcon /> <span>Help</span>
           </MenuItem>
-          <MenuItem>
-            <ExitToAppOutlinedIcon /> Logout
+          <MenuItem className="navbar-menu-items">
+            <ExitToAppOutlinedIcon /> <span>Logout</span>
           </MenuItem>
-        </Menu>
+        </StyledMenu>
         <div className="ham-burger-menu">
           <IconButton onClick={() => setNavToggle(!navToggle)}>
             <MenuIcon className="primary-text" />
@@ -96,9 +96,6 @@ export default Navbar;
 const NavbarStyled = styled.div`
   height: 10vh;
   padding: 1rem;
-  /*  position: -webkit-sticky;
-  position: sticky;
-  top: 0; */
   background-color: var(--sidebar-dark-color);
   display: flex;
   align-items: center;
@@ -136,6 +133,33 @@ const NavbarStyled = styled.div`
     }
     .navbar-item-color {
       color: var(--font-light-color);
+    }
+  }
+  .navbar-menu {
+  }
+  .navbar-menu-items {
+    color: var(--font-light-color) !important;
+    background-color: #292d3e !important;
+  }
+  & .MuiMenu-root {
+  }
+`;
+
+const StyledMenu = styled(Menu)`
+  & > div {
+    background-color: #292d3e;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    .navbar-menu-items {
+      color: var(--font-light-color) !important;
+      font-size: 0.8rem;
+      &:hover {
+        color: var(--primary-color) !important;
+      }
+      span {
+        margin: 0 0.3rem;
+        font-size: 0.8rem;
+      }
     }
   }
 `;

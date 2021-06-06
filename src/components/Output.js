@@ -4,9 +4,9 @@ import OutputTable from "./OutputTable";
 import { SQLContext } from "../Context";
 import GetAppOutlinedIcon from "@material-ui/icons/GetAppOutlined";
 import { CSVLink } from "react-csv";
-import data from "../customers.json";
-import data2 from "../customers2.json";
-import data3 from "../customers3.json";
+import data from "../data/customers.json";
+import data2 from "../data/customers2.json";
+import data3 from "../data/customers3.json";
 import Tooltip from "@material-ui/core/Tooltip";
 
 const Output = () => {

@@ -3,6 +3,7 @@ import { SQLContext } from "../Context";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { SvgIcon } from "@material-ui/core";
+import LogoSvg from "../assets/logo.svg";
 
 function Navigation() {
   const { setNavToggle } = useContext(SQLContext);
@@ -61,9 +62,12 @@ function Navigation() {
         </li>
       </ul>
       <footer className="footer">
-        {/* <p>
-          @2021 <b>Shivansh Pahwa</b>
-        </p> */}
+        <p>
+          Made for{" "}
+          <a href="https://atlan.com/" target="_blank" rel="noreferrer">
+            <img src={LogoSvg} alt="" className="footer-logo" />
+          </a>
+        </p>
       </footer>
     </NavigationStyled>
   );
@@ -153,9 +157,14 @@ const NavigationStyled = styled.nav`
     width: 100%;
     p {
       padding: 1.3rem 0;
-      font-size: 1.1rem;
+      font-size: 1rem;
       display: block;
       text-align: center;
+    }
+    .footer-logo {
+      height: 1.1rem;
+      vertical-align: top;
+      margin-left: 0.2rem;
     }
   }
 `;
