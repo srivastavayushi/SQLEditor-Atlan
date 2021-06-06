@@ -49,7 +49,10 @@ const LandingStyled = styled.header`
   height: 100vh;
   .navbar {
     height: 10vh;
-    padding: 1rem;
+    padding: 2rem;
+    @media screen and (max-width: 1300px) {
+      padding: 1rem;
+    }
     .navbar-brand {
       display: flex;
       .brand-icon {

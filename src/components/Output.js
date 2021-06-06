@@ -33,9 +33,9 @@ const Output = () => {
                 <div className="output-queries">
                   <div>Example: </div>
                   <div className="output-queries-example">
-                    <div>SELECT * FROM customers</div>
-                    <div>SELECT contactName,city,country FROM customers</div>
-                    <div>SELECT * FROM customers WHERE country="Germany"</div>
+                    <div>SELECT * FROM Customers</div>
+                    <div>SELECT ContactName, City, Country FROM Customers</div>
+                    <div>SELECT * FROM Customers WHERE Country="Germany"</div>
                   </div>
                 </div>
               </>

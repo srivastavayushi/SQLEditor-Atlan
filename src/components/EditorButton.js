@@ -18,6 +18,12 @@ const EditorButtonStyled = styled.button`
   font-size: 1rem;
   margin: 0 0 0 1rem;
   cursor: pointer;
+  &:hover {
+    color: var(--primary-color);
+    .editor-buttons-icon {
+      color: var(--primary-color);
+    }
+  }
 `;
 
 export default EditorButton;

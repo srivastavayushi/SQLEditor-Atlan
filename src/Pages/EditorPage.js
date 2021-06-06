@@ -67,7 +67,6 @@ const EditorPageStyled = styled.main`
     .editor-buttons-icon {
       font-size: 1.3rem;
       vertical-align: bottom;
-
       color: var(--font-light-color);
     }
   }
