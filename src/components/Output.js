@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
+import React, { useContext, Suspense, lazy } from "react";
 import styled from "styled-components";
-import OutputTable from "./OutputTable";
 import { SQLContext } from "../Context";
 import GetAppOutlinedIcon from "@material-ui/icons/GetAppOutlined";
 import { CSVLink } from "react-csv";
@@ -8,6 +7,9 @@ import data from "../data/customers.json";
 import data2 from "../data/customers2.json";
 import data3 from "../data/customers3.json";
 import Tooltip from "@material-ui/core/Tooltip";
+import Loading from "./Loading";
+
+const OutputTable = lazy(() => import("./OutputTable"));
 
 const Output = () => {
   const { dataOption } = useContext(SQLContext);
@@ -23,9 +25,21 @@ const Output = () => {
             {dataOption === "data3" && <DownloadCSV dataToDownload={data3} />}
           </div>
           <div className="output-wrapper">
-            {dataOption === "data" && <OutputTable data={data} />}
-            {dataOption === "data2" && <OutputTable data={data2} />}
-            {dataOption === "data3" && <OutputTable data={data3} />}
+            {dataOption === "data" && (
+              <Suspense fallback={<Loading />}>
+                <OutputTable data={data} />
+              </Suspense>
+            )}
+            {dataOption === "data2" && (
+              <Suspense fallback={<Loading />}>
+                <OutputTable data={data2} />
+              </Suspense>
+            )}
+            {dataOption === "data3" && (
+              <Suspense fallback={<Loading />}>
+                <OutputTable data={data3} />
+              </Suspense>
+            )}
             {dataOption === "" && (
               <>
                 <div className="">Execute some sample queries,</div>
@@ -83,6 +97,7 @@ const OutputStyled = styled.div`
   .output-wrapper {
     flex-grow: 1;
     background-color: var(--sidebar-dark-color);
+    position: relative;
     transition: all 0.3s ease;
     border-bottom-right-radius: 0.2rem;
     border-bottom-left-radius: 0.2rem;

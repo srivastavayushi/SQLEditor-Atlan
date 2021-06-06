@@ -20,9 +20,6 @@ const EditorButtonStyled = styled.button`
   cursor: pointer;
   &:hover {
     color: var(--primary-color);
-    .editor-buttons-icon {
-      color: var(--primary-color);
-    }
   }
 `;
 

@@ -21,7 +21,7 @@ const EditorPage = () => {
       setDataOption("data");
     }
     if (
-      query.toUpperCase() === "SELECT CONTACTNAME,CITY,COUNTRY FROM CUSTOMERS"
+      query.toUpperCase() === "SELECT CONTACTNAME, CITY, COUNTRY FROM CUSTOMERS"
     ) {
       setDataOption("data2");
     }
@@ -67,7 +67,6 @@ const EditorPageStyled = styled.main`
     .editor-buttons-icon {
       font-size: 1.3rem;
       vertical-align: bottom;
-      color: var(--font-light-color);
     }
   }
   .pane {
