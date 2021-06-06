@@ -8,6 +8,8 @@ import Output from "../components/Output";
 import EditorButton from "../components/EditorButton";
 import PlayArrowOutlinedIcon from "@material-ui/icons/PlayArrowOutlined";
 import ClearAllOutlinedIcon from "@material-ui/icons/ClearAllOutlined";
+import BrushIcon from "@material-ui/icons/Brush";
+import { format } from "sql-formatter";
 
 const EditorPage = () => {
   const { navToggle, setDataOption, query, setQuery } = useContext(SQLContext);
@@ -16,17 +18,27 @@ const EditorPage = () => {
     setDataOption("");
   };
 
+  const handleFormatClick = () => {
+    setQuery(
+      format(query, {
+        uppercase: true, // Defaults to false
+      })
+    );
+  };
+
   const handleRunClick = () => {
-    if (query.toUpperCase() === "SELECT * FROM CUSTOMERS") {
+    if (format(query.toUpperCase()) === format("SELECT * FROM CUSTOMERS")) {
       setDataOption("data");
     }
     if (
-      query.toUpperCase() === "SELECT CONTACTNAME, CITY, COUNTRY FROM CUSTOMERS"
+      format(query.toUpperCase()) ===
+      format("SELECT CONTACTNAME, CITY, COUNTRY FROM CUSTOMERS")
     ) {
       setDataOption("data2");
     }
     if (
-      query.toUpperCase() === `SELECT * FROM CUSTOMERS WHERE COUNTRY="GERMANY"`
+      format(query.toUpperCase()) ===
+      format(`SELECT * FROM CUSTOMERS WHERE COUNTRY="GERMANY"`)
     ) {
       setDataOption("data3");
     }
@@ -43,6 +55,9 @@ const EditorPage = () => {
           </EditorButton>
           <EditorButton title={"Clear"} onClick={handleClearClick}>
             <ClearAllOutlinedIcon className="editor-buttons-icon" />
+          </EditorButton>
+          <EditorButton title={"Format"} onClick={handleFormatClick}>
+            <BrushIcon className="editor-buttons-icon" />
           </EditorButton>
         </div>
         <div className="pane">
