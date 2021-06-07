@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
 import GlobalStyle from "./styles/GlobalStyle";
 import { ContextProvider } from "./Context";
@@ -16,3 +17,5 @@ ReactDOM.render(
   </>,
   document.getElementById("root")
 );
+
+serviceWorker.register();

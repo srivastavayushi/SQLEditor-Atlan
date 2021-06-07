@@ -45,8 +45,19 @@ const Landing = () => {
       <footer className="footer">
         <p>
           Made for{" "}
-          <a href="https://atlan.com/" target="_blank" rel="noreferrer">
-            <img src={LogoSvg} alt="" className="footer-logo" />
+          <a
+            href="https://atlan.com/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="atlan-link"
+          >
+            <img
+              src={LogoSvg}
+              alt="atlan"
+              width="60"
+              height="60"
+              className="footer-logo"
+            />
           </a>
         </p>
       </footer>
@@ -120,6 +131,10 @@ const LandingStyled = styled.header`
       font-size: 1rem;
       display: block;
       text-align: center;
+      span {
+        vertical-align: middle;
+        font-size: 1rem;
+      }
     }
     .footer-logo {
       height: 1.1rem;

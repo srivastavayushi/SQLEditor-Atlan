@@ -26,6 +26,7 @@ const Editor = () => {
               type="button"
               className="expand-collapse-btn"
               onClick={() => setOpen((prevOpen) => !prevOpen)}
+              aria-label="expand-collapse-btn"
             >
               {open ? <ExpandLessOutlinedIcon /> : <ExpandMoreOutlinedIcon />}
             </button>
@@ -47,6 +48,7 @@ const Editor = () => {
               addModeClass: true,
               showHint: true,
             }}
+            aria-label="code-editor"
           />
         </div>
       </div>

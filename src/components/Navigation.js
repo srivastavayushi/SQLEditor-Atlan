@@ -83,9 +83,20 @@ function Navigation() {
       </ul>
       <footer className="footer">
         <p>
-          Made for{" "}
-          <a href="https://atlan.com/" target="_blank" rel="noreferrer">
-            <img src={LogoSvg} alt="" className="footer-logo" />
+          <span>Made for </span>
+          <a
+            href="https://atlan.com/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="atlan-link2"
+          >
+            <img
+              src={LogoSvg}
+              alt="atlan"
+              width="60"
+              height="60"
+              className="footer-logo"
+            />
           </a>
         </p>
       </footer>
@@ -188,10 +199,13 @@ const NavigationStyled = styled.nav`
       font-size: 1rem;
       display: block;
       text-align: center;
+      span {
+        vertical-align: middle;
+        font-size: 1rem;
+      }
     }
     .footer-logo {
-      height: 1.1rem;
-      vertical-align: top;
+      vertical-align: middle;
       margin-left: 0.2rem;
     }
   }

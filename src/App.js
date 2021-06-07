@@ -49,6 +49,13 @@ function App() {
           </div>
         </div>
       </div>
+      <div className="lines">
+        <div className="line-1"></div>
+        <div className="line-2"></div>
+        <div className="line-3"></div>
+        <div className="line-4"></div>
+      </div>
+
       <Switching>
         <Route exact path="/" component={Landing} />
         <Route exact path="/editor">
@@ -69,6 +76,23 @@ const AppContentStyled = styled.main`
   }
   .theme-switch span {
     color: var(--primary-color);
+  }
+  .lines {
+    position: absolute;
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    opacity: 0.4;
+    z-index: -1;
+    .line-1,
+    .line-2,
+    .line-3,
+    .line-4 {
+      width: 2px;
+      min-height: 100vh;
+      background-color: var(--border-color);
+    }
   }
 `;
 
