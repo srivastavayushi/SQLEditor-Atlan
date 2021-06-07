@@ -29,7 +29,7 @@ function App() {
 
   return (
     <AppContentStyled>
-      <div className="App">
+      <div>
         <div className="theme">
           <div className="light-dark-mode">
             <div className="left-content">

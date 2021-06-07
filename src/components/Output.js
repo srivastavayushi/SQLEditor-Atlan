@@ -40,9 +40,16 @@ const Output = () => {
                 <OutputTable data={data3} />
               </Suspense>
             )}
+            {dataOption === "noQuery" && (
+              <Suspense fallback={<Loading />}>
+                <div className="primary-text">
+                  Please enter some valid queries from the examples given.
+                </div>
+              </Suspense>
+            )}
             {dataOption === "" && (
               <>
-                <div className="">Execute some sample queries,</div>
+                <div>Execute some sample queries,</div>
                 <br />
                 <div className="output-queries">
                   <div>Example: </div>

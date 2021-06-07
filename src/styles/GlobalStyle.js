@@ -107,9 +107,7 @@ h6{
 
 //Floting Toggler
 .light-dark-mode{
-    position: fixed;
-    right: 0;
-    top: 50%;
+    
     background-color: var(--background-light-color-2);
     width: 6.5rem;
     height: 2.5rem;

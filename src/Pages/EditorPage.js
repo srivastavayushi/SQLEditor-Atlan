@@ -9,6 +9,8 @@ import EditorButton from "../components/EditorButton";
 import PlayArrowOutlinedIcon from "@material-ui/icons/PlayArrowOutlined";
 import ClearAllOutlinedIcon from "@material-ui/icons/ClearAllOutlined";
 import BrushIcon from "@material-ui/icons/Brush";
+import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
+import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import { format } from "sql-formatter";
 
 const EditorPage = () => {
@@ -21,7 +23,7 @@ const EditorPage = () => {
   const handleFormatClick = () => {
     setQuery(
       format(query, {
-        uppercase: true, // Defaults to false
+        uppercase: true,
       })
     );
   };
@@ -29,18 +31,18 @@ const EditorPage = () => {
   const handleRunClick = () => {
     if (format(query.toUpperCase()) === format("SELECT * FROM CUSTOMERS")) {
       setDataOption("data");
-    }
-    if (
+    } else if (
       format(query.toUpperCase()) ===
       format("SELECT CONTACTNAME, CITY, COUNTRY FROM CUSTOMERS")
     ) {
       setDataOption("data2");
-    }
-    if (
+    } else if (
       format(query.toUpperCase()) ===
       format(`SELECT * FROM CUSTOMERS WHERE COUNTRY="GERMANY"`)
     ) {
       setDataOption("data3");
+    } else {
+      setDataOption("noQuery");
     }
   };
 
@@ -50,15 +52,26 @@ const EditorPage = () => {
       <Navbar />
       <EditorPageStyled>
         <div className="editor-buttons">
-          <EditorButton title={"Run"} onClick={handleRunClick}>
-            <PlayArrowOutlinedIcon className="editor-buttons-icon" />
-          </EditorButton>
-          <EditorButton title={"Clear"} onClick={handleClearClick}>
-            <ClearAllOutlinedIcon className="editor-buttons-icon" />
-          </EditorButton>
-          <EditorButton title={"Format"} onClick={handleFormatClick}>
-            <BrushIcon className="editor-buttons-icon" />
-          </EditorButton>
+          <div>
+            <EditorButton title={"Run"} onClick={handleRunClick}>
+              <PlayArrowOutlinedIcon className="editor-buttons-icon" />
+            </EditorButton>
+            <EditorButton title={"Clear"} onClick={handleClearClick}>
+              <ClearAllOutlinedIcon className="editor-buttons-icon" />
+            </EditorButton>
+            <EditorButton title={"Format"} onClick={handleFormatClick}>
+              <BrushIcon className="editor-buttons-icon" />
+            </EditorButton>
+          </div>
+          <div className="editor-search">
+            <EditorButton title={"Details"} onClick={handleFormatClick}>
+              <InfoOutlinedIcon className="editor-buttons-icon" />
+            </EditorButton>
+            <div className="editor-search-bar">
+              <input type="text" name="search" placeholder="Search" />
+              <SearchOutlinedIcon className="editor-buttons-icon" />
+            </div>
+          </div>
         </div>
         <div className="pane">
           <Editor />
@@ -82,6 +95,31 @@ const EditorPageStyled = styled.main`
     .editor-buttons-icon {
       font-size: 1.3rem;
       vertical-align: bottom;
+    }
+    .editor-search {
+      display: flex;
+      .editor-search-bar {
+        margin-left: 1rem;
+        background-color: var(--sidebar-dark-color);
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 2px;
+        color: var(--font-light-color);
+        font-size: 1rem;
+        input {
+          height: 100%;
+          background: none;
+          border: none;
+          color: var(--font-light-color);
+          &::placeholder {
+            color: var(--font-light-color);
+            font-size: 1rem;
+          }
+          &:focus {
+            outline: 0;
+          }
+        }
+      }
     }
   }
   .pane {
