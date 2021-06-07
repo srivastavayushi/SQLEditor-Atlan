@@ -33,7 +33,7 @@ I tried to use as less libraries as possible so as to make application load fast
 
 2. Responsive
 
-   - I have media queries wherever possible so as to make the application look responive across desktops, tablets & mobile phones
+   - I have used media queries wherever possible so as to make the application look responive across desktops, tablets & mobile phones
    - I have avoided absolute sizing of fonts/containers wherever possible & instead used **_em_** & **_rem_**
 
 3. Progressive Web App
