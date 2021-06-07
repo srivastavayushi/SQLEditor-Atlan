@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
 .light-theme{
     --primary-color: #007bff;
@@ -51,8 +52,8 @@ html {
     list-style: none;
     text-decoration: none;
     font-family: 'Nunito', sans-serif;
+    font-display: swap;
     font-size: 1.1rem;
-    
 }
 
 body{
