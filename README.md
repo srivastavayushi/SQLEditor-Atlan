@@ -22,12 +22,14 @@ I tried to use as less libraries as possible so as to make application load fast
 
 1. Optimizing Loading Time
 
-   - I used browser's network tool to find out the load time and then cross-checked it using analytic tools like GTmatrix and Web.Dev. The final **Fully Loaded Time** is just 1.8s.
-   - I removed the unused css using PurgeCSS.
-   - I have added fallback fonts in CSS font-family to ensure that the text remains visible during the webfont load (Nunito). This improved the **FCP Score** to 1s.
-   - With React's Virtual DOM, rendering components is fast & thus the **LCP Score** for the dashboard is just 1s.
+   - I used browser's lighthouse tool to find out the load time and then cross-checked it using analytic tools like GTmatrix and Web.Dev. The final **Time To Interactive** is just 0.4s and the **Fully Loaded Time** is 1.1s.
+   - I have added fallback fonts in CSS font-family to ensure that the text remains visible during the webfont load (Nunito). This improved the **FCP Score** to 0.4s.
+   - With React's Virtual DOM, rendering components is fast & thus the **LCP Score** for the dashboard is just 0.4s.
    - **Caching with Service worker** improved performance on subsequent loads.
    - CLS(Cumulative Layout Shift) is 0.
+
+![Screen Shot 2021-06-08 at 2 13 27 AM](https://user-images.githubusercontent.com/54510593/121086599-fd4a6b00-c800-11eb-915b-b92f15d72ac4.png)
+
 
 2. Responsive
 
@@ -41,3 +43,18 @@ I tried to use as less libraries as possible so as to make application load fast
    - Can be used offline
 
 ## Screenshots
+
+![screencapture-sql-editor-atlan-netlify-app-2021-06-08-02_22_50](https://user-images.githubusercontent.com/54510593/121086862-54e8d680-c801-11eb-9c15-3861e81b9bba.png)
+
+![screencapture-sql-editor-atlan-netlify-app-editor-2021-06-08-02_23_21](https://user-images.githubusercontent.com/54510593/121086883-5a462100-c801-11eb-9614-726ed65a06a1.png)
+
+![screencapture-sql-editor-atlan-netlify-app-editor-2021-06-08-02_28_42](https://user-images.githubusercontent.com/54510593/121086890-5d411180-c801-11eb-97b3-8376f4681e47.png)
+
+![screencapture-sql-editor-atlan-netlify-app-2021-06-08-02_29_01](https://user-images.githubusercontent.com/54510593/121086911-6500b600-c801-11eb-95ac-46a6844aff54.png)
+
+![screencapture-sql-editor-atlan-netlify-app-editor-2021-06-08-02_24_35](https://user-images.githubusercontent.com/54510593/121086917-692cd380-c801-11eb-9c96-863a143bdf3f.png)
+
+
+
+
+
