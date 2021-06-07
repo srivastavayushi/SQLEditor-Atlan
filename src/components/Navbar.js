@@ -135,14 +135,6 @@ const NavbarStyled = styled.div`
       color: var(--font-light-color);
     }
   }
-  .navbar-menu {
-  }
-  .navbar-menu-items {
-    color: var(--font-light-color) !important;
-    background-color: #292d3e !important;
-  }
-  & .MuiMenu-root {
-  }
 `;
 
 const StyledMenu = styled(Menu)`

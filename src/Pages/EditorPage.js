@@ -6,6 +6,7 @@ import Sidebar from "../components/Sidebar";
 import Editor from "../components/Editor";
 import Output from "../components/Output";
 import EditorButton from "../components/EditorButton";
+import TableDetails from "../components/TableDetails";
 import PlayArrowOutlinedIcon from "@material-ui/icons/PlayArrowOutlined";
 import ClearAllOutlinedIcon from "@material-ui/icons/ClearAllOutlined";
 import BrushIcon from "@material-ui/icons/Brush";
@@ -14,7 +15,8 @@ import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import { format } from "sql-formatter";
 
 const EditorPage = () => {
-  const { navToggle, setDataOption, query, setQuery } = useContext(SQLContext);
+  const { navToggle, setDataOption, query, setQuery, modalOpen, setModalOpen } =
+    useContext(SQLContext);
   const handleClearClick = () => {
     setQuery("");
     setDataOption("");
@@ -29,16 +31,23 @@ const EditorPage = () => {
   };
 
   const handleRunClick = () => {
-    if (format(query.toUpperCase()) === format("SELECT * FROM CUSTOMERS")) {
+    if (
+      format(query.toUpperCase()) === format("SELECT * FROM CUSTOMERS") ||
+      format(query.toUpperCase()) === format("SELECT * FROM CUSTOMERS;")
+    ) {
       setDataOption("data");
     } else if (
       format(query.toUpperCase()) ===
-      format("SELECT CONTACTNAME, CITY, COUNTRY FROM CUSTOMERS")
+        format("SELECT CONTACTNAME, CITY, COUNTRY FROM CUSTOMERS") ||
+      format(query.toUpperCase()) ===
+        format("SELECT CONTACTNAME, CITY, COUNTRY FROM CUSTOMERS;")
     ) {
       setDataOption("data2");
     } else if (
       format(query.toUpperCase()) ===
-      format(`SELECT * FROM CUSTOMERS WHERE COUNTRY="GERMANY"`)
+        format(`SELECT * FROM CUSTOMERS WHERE COUNTRY="GERMANY"`) ||
+      format(query.toUpperCase()) ===
+        format(`SELECT * FROM CUSTOMERS WHERE COUNTRY="GERMANY";`)
     ) {
       setDataOption("data3");
     } else {
@@ -64,7 +73,7 @@ const EditorPage = () => {
             </EditorButton>
           </div>
           <div className="editor-search">
-            <EditorButton title={"Details"} onClick={handleFormatClick}>
+            <EditorButton title={"Details"} onClick={() => setModalOpen(true)}>
               <InfoOutlinedIcon className="editor-buttons-icon" />
             </EditorButton>
             <div className="editor-search-bar">
@@ -77,6 +86,7 @@ const EditorPage = () => {
           <Editor />
           <Output />
         </div>
+        {modalOpen && <TableDetails />}
       </EditorPageStyled>
     </>
   );

@@ -41,11 +41,9 @@ const Output = () => {
               </Suspense>
             )}
             {dataOption === "noQuery" && (
-              <Suspense fallback={<Loading />}>
-                <div className="primary-text">
-                  Please enter some valid queries from the examples given.
-                </div>
-              </Suspense>
+              <div className="primary-text">
+                Please enter some valid queries from the examples given.
+              </div>
             )}
             {dataOption === "" && (
               <>

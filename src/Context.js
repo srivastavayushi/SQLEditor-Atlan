@@ -8,6 +8,7 @@ const ContextProvider = ({ children }) => {
   const [editorTheme, setEditorTheme] = useState("material-palenight");
   const [query, setQuery] = useState("SELECT * FROM Customers");
   const [dataOption, setDataOption] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <SQLContext.Provider
@@ -22,6 +23,8 @@ const ContextProvider = ({ children }) => {
         setDataOption,
         query,
         setQuery,
+        modalOpen,
+        setModalOpen,
       }}
     >
       {children}
