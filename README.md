@@ -20,14 +20,14 @@ I tried to use as less libraries as possible so as to make application load fast
 
 ## Highlights
 
-1. Optimizing loading time
+1. Optimizing Loading Time
 
-   - I used browser's network tool to find out the load time and then cross-checked it using analytic tools like GTmatrix and Web.Dev.
-
-   - I have added fallback fonts in CSS font-family to ensure that the text remains visible during the webfont load (Nunito). This **improved the FCP Score**.
-   - With React's Virtual DOM, rendering components is fast & thus the **LCP Score** for the dashboard is fast.
+   - I used browser's network tool to find out the load time and then cross-checked it using analytic tools like GTmatrix and Web.Dev. The final **Fully Loaded Time** is just 1.8s.
+   - I removed the unused css using PurgeCSS.
+   - I have added fallback fonts in CSS font-family to ensure that the text remains visible during the webfont load (Nunito). This improved the **FCP Score** to 1s.
+   - With React's Virtual DOM, rendering components is fast & thus the **LCP Score** for the dashboard is just 1s.
    - **Caching with Service worker** improved performance on subsequent loads.
-   - Although the dashboard uses animations, I ensured no major Layout shifts & thus CLS is just 0.001.
+   - CLS(Cumulative Layout Shift) is 0.
 
 2. Responsive
 
@@ -35,6 +35,7 @@ I tried to use as less libraries as possible so as to make application load fast
    - I have avoided absolute sizing of fonts/containers wherever possible & instead used **_em_** & **_rem_**
 
 3. Progressive Web App
+
    - Installable
    - Optimized
    - Can be used offline
