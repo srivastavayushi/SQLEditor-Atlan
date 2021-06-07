@@ -61,25 +61,22 @@ const EditorPage = () => {
       <Navbar />
       <EditorPageStyled>
         <div className="editor-buttons">
-          <div>
-            <EditorButton title={"Run"} onClick={handleRunClick}>
-              <PlayArrowOutlinedIcon className="editor-buttons-icon" />
-            </EditorButton>
-            <EditorButton title={"Clear"} onClick={handleClearClick}>
-              <ClearAllOutlinedIcon className="editor-buttons-icon" />
-            </EditorButton>
-            <EditorButton title={"Format"} onClick={handleFormatClick}>
-              <BrushIcon className="editor-buttons-icon" />
-            </EditorButton>
-          </div>
-          <div className="editor-search">
-            <EditorButton title={"Details"} onClick={() => setModalOpen(true)}>
-              <InfoOutlinedIcon className="editor-buttons-icon" />
-            </EditorButton>
-            <div className="editor-search-bar">
-              <input type="text" name="search" placeholder="Search" />
-              <SearchOutlinedIcon className="editor-buttons-icon" />
-            </div>
+          <EditorButton title={"Run"} onClick={handleRunClick}>
+            <PlayArrowOutlinedIcon className="editor-buttons-icon" />
+          </EditorButton>
+          <EditorButton title={"Clear"} onClick={handleClearClick}>
+            <ClearAllOutlinedIcon className="editor-buttons-icon" />
+          </EditorButton>
+          <EditorButton title={"Format"} onClick={handleFormatClick}>
+            <BrushIcon className="editor-buttons-icon" />
+          </EditorButton>
+
+          <EditorButton title={"Details"} onClick={() => setModalOpen(true)}>
+            <InfoOutlinedIcon className="editor-buttons-icon" />
+          </EditorButton>
+          <div className="editor-search-bar">
+            <input type="text" name="search" placeholder="Search" />
+            <SearchOutlinedIcon className="editor-buttons-icon" />
           </div>
         </div>
         <div className="pane">
@@ -99,35 +96,40 @@ const EditorPageStyled = styled.main`
   min-height: 90vh;
   background-color: var(--background-dark-color);
   .editor-buttons {
-    height: 10vh;
+    min-height: 10vh;
     display: flex;
     align-items: center;
+    @media screen and (max-width: 900px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
     .editor-buttons-icon {
       font-size: 1.3rem;
       vertical-align: bottom;
     }
-    .editor-search {
-      display: flex;
-      .editor-search-bar {
-        margin-left: 1rem;
-        background-color: var(--sidebar-dark-color);
-        padding: 0.5rem 1rem;
+
+    .editor-search-bar {
+      margin-left: 1rem;
+      background-color: var(--sidebar-dark-color);
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 2px;
+      color: var(--font-light-color);
+      font-size: 1rem;
+      @media screen and (max-width: 900px) {
+        margin: 1rem;
+      }
+      input {
+        height: 100%;
+        background: none;
         border: none;
-        border-radius: 2px;
         color: var(--font-light-color);
-        font-size: 1rem;
-        input {
-          height: 100%;
-          background: none;
-          border: none;
+        &::placeholder {
           color: var(--font-light-color);
-          &::placeholder {
-            color: var(--font-light-color);
-            font-size: 1rem;
-          }
-          &:focus {
-            outline: 0;
-          }
+          font-size: 1rem;
+        }
+        &:focus {
+          outline: 0;
         }
       }
     }

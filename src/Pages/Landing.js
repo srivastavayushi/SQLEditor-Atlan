@@ -24,11 +24,12 @@ const Landing = () => {
 
       <div className="typography">
         <h1>
-          Do <span>Query</span> like never before.
+          Perform <span>Queries</span> with us.
         </h1>
         <h2>
-          A small sql editor where you can do queries
-          <br /> on sql tables effortlessly :)
+          A simple sql editor for performing queries on
+          <br />
+          sql tables with the help of suggestions
         </h2>
         <div>
           <Link to="/editor">

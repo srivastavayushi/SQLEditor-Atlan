@@ -21,6 +21,9 @@ const EditorButtonStyled = styled.button`
   &:hover {
     color: var(--primary-color);
   }
+  @media screen and (max-width: 900px) {
+    margin: 1rem 0 0 1rem;
+  }
 `;
 
 export default EditorButton;

@@ -1,11 +1,12 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, lazy, Suspense } from "react";
 import { Switch as Switching, Route } from "react-router-dom";
 import styled from "styled-components";
 import Landing from "./Pages/Landing";
-import EditorPage from "./Pages/EditorPage";
 import Brightness4Icon from "@material-ui/icons/Brightness4";
 import Switch from "@material-ui/core/Switch";
 import { SQLContext } from "./Context";
+import Loading from "./components/Loading";
+const EditorPage = lazy(() => import("./Pages/EditorPage"));
 
 function App() {
   const { theme, setTheme, setEditorTheme } = useContext(SQLContext);
@@ -50,7 +51,11 @@ function App() {
       </div>
       <Switching>
         <Route exact path="/" component={Landing} />
-        <Route exact path="/editor" component={EditorPage} />
+        <Route exact path="/editor">
+          <Suspense fallback={<Loading />}>
+            <EditorPage />
+          </Suspense>
+        </Route>
       </Switching>
     </AppContentStyled>
   );
