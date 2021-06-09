@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import { SQLContext } from "../Context";
@@ -6,6 +6,7 @@ import Editor from "../components/Editor";
 import Output from "../components/Output";
 import EditorButton from "../components/EditorButton";
 import TableDetails from "../components/TableDetails";
+import Snackbar from "@material-ui/core/Snackbar";
 import PlayArrowOutlinedIcon from "@material-ui/icons/PlayArrowOutlined";
 import ClearAllOutlinedIcon from "@material-ui/icons/ClearAllOutlined";
 import BrushIcon from "@material-ui/icons/Brush";
@@ -14,11 +15,30 @@ import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import { format } from "sql-formatter";
 
 const EditorPage = () => {
-  const { setDataOption, query, setQuery, modalOpen, setModalOpen } =
-    useContext(SQLContext);
+  const {
+    dataOption,
+    setDataOption,
+    query,
+    setQuery,
+    modalOpen,
+    setModalOpen,
+  } = useContext(SQLContext);
+
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+
+  const [direction] = useState({
+    vertical: "bottom",
+    horizontal: "right",
+  });
+  const { vertical, horizontal } = direction;
+
   const handleClearClick = () => {
     setQuery("");
     setDataOption("");
+    setSnackbarOpen(true);
+    setInterval(() => {
+      setSnackbarOpen(false);
+    }, 5000);
   };
 
   const handleFormatClick = () => {
@@ -52,6 +72,10 @@ const EditorPage = () => {
     } else {
       setDataOption("noQuery");
     }
+    setSnackbarOpen(true);
+    setInterval(() => {
+      setSnackbarOpen(false);
+    }, 5000);
   };
 
   return (
@@ -82,6 +106,22 @@ const EditorPage = () => {
           <Output />
         </div>
         {modalOpen && <TableDetails />}
+        <Snackbar
+          anchorOrigin={{ vertical, horizontal }}
+          open={snackbarOpen}
+          message={
+            dataOption === "data" ||
+            dataOption === "data2" ||
+            dataOption === "data3"
+              ? "Query Executed"
+              : dataOption === "noQuery"
+              ? "Enter valid queries"
+              : dataOption === ""
+              ? "Editor Cleared"
+              : null
+          }
+          key={vertical + horizontal}
+        />
       </EditorPageStyled>
     </>
   );
