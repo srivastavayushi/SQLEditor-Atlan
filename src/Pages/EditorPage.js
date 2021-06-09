@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import { SQLContext } from "../Context";
-import Sidebar from "../components/Sidebar";
 import Editor from "../components/Editor";
 import Output from "../components/Output";
 import EditorButton from "../components/EditorButton";
@@ -15,7 +14,7 @@ import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import { format } from "sql-formatter";
 
 const EditorPage = () => {
-  const { navToggle, setDataOption, query, setQuery, modalOpen, setModalOpen } =
+  const { setDataOption, query, setQuery, modalOpen, setModalOpen } =
     useContext(SQLContext);
   const handleClearClick = () => {
     setQuery("");
@@ -57,7 +56,6 @@ const EditorPage = () => {
 
   return (
     <>
-      <Sidebar navToggle={navToggle} />
       <Navbar />
       <EditorPageStyled>
         <div className="editor-buttons">

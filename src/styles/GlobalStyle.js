@@ -1,7 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
 .light-theme{
     --primary-color: #007bff;
@@ -45,7 +44,7 @@ const GlobalStyle = createGlobalStyle`
 }
 html {
     scroll-behavior: smooth;
-  }
+}
 
 *{
     margin: 0;
@@ -53,7 +52,7 @@ html {
     box-sizing: border-box;
     list-style: none;
     text-decoration: none;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-display: swap;
     font-size: 1.1rem;
 }
@@ -110,7 +109,6 @@ h6{
 
 //Floting Toggler
 .light-dark-mode{
-    
     background-color: var(--background-light-color-2);
     width: 6.5rem;
     height: 2.5rem;
@@ -119,31 +117,31 @@ h6{
     align-items: center;
     justify-content: center;
     svg{
-      display: flex;
-      align-items: center;
-      font-size: 1.7rem;
-      color: var(--white-color);
+        display: flex;
+        align-items: center;
+        font-size: 1.7rem;
+        color: var(--white-color);
     }
-  }
+}
 
-  //Nav Toggler
-  .ham-burger-menu{
-      display: none;
-      z-index: 15;
-      svg{
-          font-size: 1.8rem;
-      }
+//Nav Toggler
+.ham-burger-menu{
+    display: none;
+    z-index: 15;
+    svg{
+        font-size: 1.8rem;
     }
+}
 
-    .nav-toggle{
-        transform: translateX(0);
-        z-index: 20;
-    }
-  @media screen and (max-width:1200px){
+.nav-toggle{
+    transform: translateX(0);
+    z-index: 25;
+}
+@media screen and (max-width:1200px){
     .ham-burger-menu{
         display: block;
     }
-  }
+}
 
 `;
 

@@ -6,10 +6,12 @@ import Brightness4Icon from "@material-ui/icons/Brightness4";
 import Switch from "@material-ui/core/Switch";
 import { SQLContext } from "./Context";
 import Loading from "./components/Loading";
+import Sidebar from "./components/Sidebar";
+
 const EditorPage = lazy(() => import("./Pages/EditorPage"));
 
 function App() {
-  const { theme, setTheme, setEditorTheme } = useContext(SQLContext);
+  const { theme, setTheme, setEditorTheme, navToggle } = useContext(SQLContext);
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
@@ -58,11 +60,14 @@ function App() {
 
       <Switching>
         <Route exact path="/" component={Landing} />
-        <Route exact path="/editor">
-          <Suspense fallback={<Loading />}>
-            <EditorPage />
-          </Suspense>
-        </Route>
+        <div>
+          <Sidebar navToggle={navToggle} />
+          <Route exact path="/editor">
+            <Suspense fallback={<Loading />}>
+              <EditorPage />
+            </Suspense>
+          </Route>
+        </div>
       </Switching>
     </AppContentStyled>
   );

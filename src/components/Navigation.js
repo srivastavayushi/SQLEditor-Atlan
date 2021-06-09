@@ -156,6 +156,9 @@ const NavigationStyled = styled.nav`
       span {
         margin-left: 20%;
         font-size: 1rem;
+        @media screen and (max-width: 576px) {
+          margin-left: 15%;
+        }
       }
       a {
         display: block;
