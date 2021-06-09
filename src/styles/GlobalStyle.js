@@ -21,6 +21,7 @@ const GlobalStyle = createGlobalStyle`
     --scrollbar-thump-color: #6b6b6b;
     --scrollbar-track-color: #383838;
     --navigation-link-color: #383838;
+    --editor-color:#fff;
 }
 .dark-theme{
     --primary-color: #007bff;
@@ -40,6 +41,7 @@ const GlobalStyle = createGlobalStyle`
     --scrollbar-thump-color: #6b6b6b;
     --scrollbar-track-color: #383838;
     --navigation-link-color: #a4acc4;
+    --editor-color:#292d3e;
 }
 html {
     scroll-behavior: smooth;

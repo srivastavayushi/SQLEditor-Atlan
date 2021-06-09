@@ -91,7 +91,7 @@ const TableDetailStyled = styled(Dialog)`
   }
   .details-container {
     width: 100%;
-    background-color: #2a2d3e;
+    background-color: var(--editor-color);
     .details-title {
       display: flex;
       background-color: var(--sidebar-dark-color);
