@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
+import { SQLContext } from "../Context";
 
 const OutputTable = ({ data }) => {
+  const { searchFilterValue, setSearchFilterDisabled } = useContext(SQLContext);
+
   const columns = Object.keys(data[0]);
+
+  const getFilteredRows = (rows, filterKey) => {
+    return rows.filter((row) => {
+      return Object.values(row).some((s) =>
+        ("" + s).toLowerCase().includes(filterKey.toLowerCase())
+      );
+    });
+  };
+
+  useEffect(() => {
+    setSearchFilterDisabled(false);
+  }, [setSearchFilterDisabled]);
 
   return (
     <OutputTableStyled>
@@ -18,7 +33,7 @@ const OutputTable = ({ data }) => {
         </thead>
 
         <tbody>
-          {data.map((row, index) => (
+          {getFilteredRows(data, searchFilterValue).map((row, index) => (
             <tr key={index}>
               {columns.map((col, index) => (
                 <td key={index}>

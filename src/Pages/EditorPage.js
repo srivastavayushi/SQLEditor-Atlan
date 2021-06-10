@@ -22,9 +22,14 @@ const EditorPage = () => {
     setQuery,
     modalOpen,
     setModalOpen,
+    searchFilterValue,
+    setSearchFilterValue,
+    searchFilterDisabled,
+    setSearchFilterDisabled,
   } = useContext(SQLContext);
 
   const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [searchSnackbarOpen, setSearchSnackbarOpen] = useState(false);
 
   const [direction] = useState({
     vertical: "bottom",
@@ -35,6 +40,7 @@ const EditorPage = () => {
   const handleClearClick = () => {
     setQuery("");
     setDataOption("");
+    setSearchFilterDisabled(true);
     setSnackbarOpen(true);
     setInterval(() => {
       setSnackbarOpen(false);
@@ -49,7 +55,17 @@ const EditorPage = () => {
     );
   };
 
+  const handleSearchDisabled = () => {
+    if (searchFilterDisabled) {
+      setSearchSnackbarOpen(true);
+      setInterval(() => {
+        setSearchSnackbarOpen(false);
+      }, 5000);
+    }
+  };
+
   const handleRunClick = () => {
+    setSearchFilterDisabled(true);
     if (
       format(query.toUpperCase()) === format("SELECT * FROM CUSTOMERS") ||
       format(query.toUpperCase()) === format("SELECT * FROM CUSTOMERS;")
@@ -96,8 +112,18 @@ const EditorPage = () => {
           <EditorButton title={"Details"} onClick={() => setModalOpen(true)}>
             <InfoOutlinedIcon className="editor-buttons-icon" />
           </EditorButton>
-          <div className="editor-search-bar">
-            <input type="text" name="search" placeholder="Search" />
+          <div
+            className="editor-search-bar"
+            onClick={() => handleSearchDisabled()}
+          >
+            <input
+              type="text"
+              name="search"
+              placeholder="Search"
+              value={searchFilterValue}
+              onChange={(e) => setSearchFilterValue(e.target.value)}
+              disabled={searchFilterDisabled}
+            />
             <SearchOutlinedIcon className="editor-buttons-icon" />
           </div>
         </div>
@@ -121,6 +147,12 @@ const EditorPage = () => {
               : null
           }
           key={vertical + horizontal}
+        />
+        <Snackbar
+          anchorOrigin={{ vertical, horizontal }}
+          open={searchSnackbarOpen}
+          message={"No table present to filter"}
+          key={`topright`}
         />
       </EditorPageStyled>
     </>

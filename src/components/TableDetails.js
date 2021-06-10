@@ -121,7 +121,7 @@ const TableDetailStyled = styled(Dialog)`
 
       margin-left: 5rem;
       @media screen and (max-width: 576px) {
-        margin-left: 2rem;
+        margin-left: 0.3rem;
       }
       div {
         font-size: 1.1rem;

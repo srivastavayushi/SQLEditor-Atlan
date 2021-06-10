@@ -4,6 +4,8 @@ You can check out the application at : **https://sql-editor-atlan.netlify.app/**
 
 The application fulfils all the requirements that were mentioned by team Atlan.
 
+You can run different queries, filter table data based on search, clear editor, format queries, etc.
+
 **Task :** Create a SQL editor view where your users can query easily on a table using SQL, and see the results.
 
 ## Data
@@ -16,7 +18,7 @@ I tried to use as less libraries as possible so as to make application load fast
 
 1. ReactJS:
 2. MaterialUI: For icons and a modal
-3. Styled Components - For CSS
+3. Styled Components - For CSS & DarkMode/LightMode
 
 ## Highlights
 
@@ -29,7 +31,6 @@ I tried to use as less libraries as possible so as to make application load fast
    - CLS(Cumulative Layout Shift) is 0.
 
 ![Screen Shot 2021-06-08 at 2 13 27 AM](https://user-images.githubusercontent.com/54510593/121086599-fd4a6b00-c800-11eb-915b-b92f15d72ac4.png)
-
 
 2. Responsive
 
@@ -53,8 +54,3 @@ I tried to use as less libraries as possible so as to make application load fast
 ![screencapture-sql-editor-atlan-netlify-app-2021-06-08-02_29_01](https://user-images.githubusercontent.com/54510593/121086911-6500b600-c801-11eb-95ac-46a6844aff54.png)
 
 ![screencapture-sql-editor-atlan-netlify-app-editor-2021-06-08-02_24_35](https://user-images.githubusercontent.com/54510593/121086917-692cd380-c801-11eb-9c96-863a143bdf3f.png)
-
-
-
-
-

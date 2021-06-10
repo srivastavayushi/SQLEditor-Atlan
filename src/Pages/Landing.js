@@ -24,7 +24,7 @@ const Landing = () => {
 
       <div className="typography">
         <h1>
-          Perform <span>Queries</span> with us.
+          Perform <span>Queries</span> with us
         </h1>
         <h2>
           A simple sql editor for performing queries on
@@ -74,6 +74,9 @@ const LandingStyled = styled.header`
     @media screen and (max-width: 1300px) {
       padding: 1rem;
     }
+    @media screen and (max-width: 576px) {
+      padding: 1.5rem 1rem;
+    }
     .navbar-brand {
       display: flex;
       .brand-icon {
@@ -103,12 +106,15 @@ const LandingStyled = styled.header`
 
     h1 {
       margin: 1rem;
+      @media screen and (max-width: 576px) {
+        margin: 0.5rem;
+      }
     }
     h2 {
       font-size: 1.4rem;
       margin: 1rem;
       @media screen and (max-width: 576px) {
-        font-size: 1.1rem;
+        font-size: 1rem;
       }
     }
     div {

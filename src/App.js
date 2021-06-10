@@ -60,14 +60,14 @@ function App() {
 
       <Switching>
         <Route exact path="/" component={Landing} />
-        <div>
+        <>
           <Sidebar navToggle={navToggle} />
           <Route exact path="/editor">
             <Suspense fallback={<Loading />}>
               <EditorPage />
             </Suspense>
           </Route>
-        </div>
+        </>
       </Switching>
     </AppContentStyled>
   );

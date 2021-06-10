@@ -9,6 +9,8 @@ const ContextProvider = ({ children }) => {
   const [query, setQuery] = useState("SELECT * FROM Customers");
   const [dataOption, setDataOption] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
+  const [searchFilterValue, setSearchFilterValue] = useState("");
+  const [searchFilterDisabled, setSearchFilterDisabled] = useState(true);
 
   return (
     <SQLContext.Provider
@@ -25,6 +27,10 @@ const ContextProvider = ({ children }) => {
         setQuery,
         modalOpen,
         setModalOpen,
+        searchFilterValue,
+        setSearchFilterValue,
+        searchFilterDisabled,
+        setSearchFilterDisabled,
       }}
     >
       {children}
